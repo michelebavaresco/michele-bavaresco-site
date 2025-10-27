@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Michéle Bavaresco - Despertar Incorporado</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --areia:#F4EDE6;
+      --verde-escuro:#2E3A33;
+      --texto:#2f2f2f;
+      --texto-suave:#5b5b5b;
+      --acao:#4CAf6A;
+      --acao-hover:#3E9558;
+      --borda-suave: rgba(20,20,20,.06);
+      --sombra: 0 10px 30px rgba(0,0,0,.06);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth; scroll-padding-top: 96px;}
+    body{
+      color:var(--texto);
+      background:radial-gradient(1200px 600px at 10% -10%, #ffffff 0%, #fafafa 60%, #f8f8f8 100%);
+      line-height:1.75; letter-spacing:.01em;
+      font-family:'Inter', sans-serif; font-size:17px;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+
+    /* NAV */
+    nav{
+      position:fixed; inset:0 0 auto 0;
+      background:rgba(255,255,255,0.88);
+      backdrop-filter:saturate(160%) blur(10px);
+      border-bottom:1px solid var(--borda-suave);
+      z-index:1000;
+    }
+    .nav-inner{
+      max-width:1120px; margin:0 auto; padding:.6rem 1rem;
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:nowrap; gap:.8rem;
+    }
+    .brand{
+      font-family:'Playfair Display',serif; font-weight:600; color:var(--verde-escuro);
+      font-size:1.4rem; white-space:nowrap;
+    }
+    .brand a{ color:inherit; text-decoration:none; }
+
+    .menu-row{
+      display:flex; align-items:center; gap:.8rem; flex-wrap:nowrap;
+    }
+    .menu-row ul{
+      list-style:none; display:flex; gap:.8rem; flex-wrap:nowrap;
+    }
+    .menu-row ul li a{
+      text-decoration:none; color:var(--texto); font-weight:600;
+      padding:.35rem .55rem; border-radius:999px; transition:.25s;
+      font-size:.97rem; white-space:nowrap;
+    }
+    .menu-row ul li a:hover{ color:#fff; background:var(--acao); }
+
+    /* Botões idioma */
+    .lang-switch{display:flex; gap:.3rem; align-items:center;}
+    .lang-btn{
+      border:1px solid rgba(0,0,0,.15); background:#fff;
+      padding:.25rem .55rem; border-radius:999px; cursor:pointer;
+      font-weight:600; font-size:.85rem; line-height:1; transition:.25s;
+    }
+    .lang-btn.active{ background:var(--acao); color:#fff; border-color:var(--acao); }
+    .lang-sep{ opacity:.3; font-size:.85rem; }
+
+    /* HERO */
+    header{
+      position:relative; height:92vh; min-height:560px;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .hero-img{
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover;
+      object-position:center 28%;
+      filter:brightness(.85);
+    }
+
+    /* SEÇÕES */
+    section{padding:5rem 1.2rem 3.75rem;max-width:1120px;margin:auto;}
+    section h2{
+      text-align:center;margin-bottom:2rem;
+      font-size:2rem;font-family:'Playfair Display',serif;
+      color:var(--verde-escuro);
+      background:var(--areia);display:inline-block;
+      padding:.55rem 1.25rem;border-radius:12px;box-shadow:var(--sombra);
+    }
+    .section-inner{
+      background:#fff;border:1px solid var(--borda-suave);
+      border-radius:20px;padding:2.25rem;box-shadow:var(--sombra);
+    }
+    section p{color:var(--texto-suave);margin-bottom:1rem;font-size:1.02rem;}
+
+    /* GRID */
+    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:2.25rem; align-items:center; }
+    .grid-2 img{
+      width:100%; max-width:560px; justify-self:center;
+      border-radius:20px; border:1px solid var(--borda-suave);
+      object-fit:cover; box-shadow:0 6px 18px rgba(0,0,0,.05);
+    }
+    .copy{max-width:560px; justify-self:center;}
+
+    /* BENEFÍCIOS */
+    .beneficios{ display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+    .card{
+      background:#fff; border:1px solid var(--borda-suave);
+      border-radius:20px; box-shadow:var(--sombra); padding:1rem;
+      text-decoration:none; color:inherit; display:flex; flex-direction:column; height:100%;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{ transform:translateY(-4px); box-shadow:0 10px 26px rgba(0,0,0,.10); }
+    .card img{
+      width:100%; border-radius:14px; border:1px solid var(--borda-suave);
+      aspect-ratio:4/3; object-fit:cover; display:block; transition:transform .35s ease;
+    }
+    .card:hover img{ transform:scale(1.02); }
+    .card h3{
+      font-size:1.02rem; color:var(--verde-escuro); margin:.25rem 0 .65rem; text-align:center;
+      line-height:1.4; min-height:3.1em; display:flex; align-items:center; justify-content:center;
+    }
+
+    /* CONTATO */
+    #contato .contatos{ display:flex; justify-content:center; align-items:center; gap:28px; margin-top:16px; }
+    #contato .contatos a{
+      color:var(--verde-escuro); font-size:2.1rem; text-decoration:none; display:inline-flex;
+      align-items:center; justify-content:center; width:52px; height:52px; border-radius:50%;
+      background:var(--areia); border:1px solid var(--borda-suave);
+      box-shadow:0 6px 16px rgba(76,175,106,.18);
+      transition:transform .18s ease, box-shadow .18s ease, background .25s ease, color .25s ease;
+    }
+    #contato .contatos a:hover{ transform:translateY(-3px); background:var(--acao); color:#fff; box-shadow:0 10px 24px rgba(76,175,106,.22); }
+
+    /* FOOTER */
+    footer{ background:linear-gradient(180deg,#2f3a33 0%,#27342d 100%); color:#fff; text-align:center; padding:2rem; font-size:.95rem; }
+    footer .icons{ margin-top:.75rem; display:flex; gap:16px; justify-content:center; }
+    footer .icons a{ color:#fff; text-decoration:none; font-size:1.35rem; transition:color .25s ease; }
+    footer .icons a:hover{ color:var(--acao); }
+
+    /* RESPONSIVO */
+    @media (max-width:950px){
+      .menu-row ul{gap:.45rem;}
+      .menu-row ul li a{font-size:.85rem; padding:.3rem .4rem;}
+      .brand{font-size:1.25rem;}
+    }
+    @media (max-width:768px){
+      .nav-inner{flex-wrap:wrap;justify-content:center;}
+      .menu-row{flex-wrap:wrap;justify-content:center;}
+      .lang-switch{margin-top:.3rem;}
+      .beneficios{grid-template-columns:1fr;}
+      .grid-2{grid-template-columns:1fr;gap:1.5rem;}
+      header{height:84vh;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="brand"><a href="#hero">Michéle Bavaresco</a></div>
+      <div class="menu-row">
+        <ul>
+          <li><a href="#sobre" data-i18n="nav.journey">A Jornada</a></li>
+          <li><a href="#ofertas" data-i18n="nav.offerings">Ofertas</a></li>
+          <li><a href="#beneficios" data-i18n="nav.benefits">Benefícios</a></li>
+          <li><a href="#comentarios" data-i18n="nav.comments">Comentários</a></li>
+          <li><a href="#contato" data-i18n="nav.contact">Contato</a></li>
+        </ul>
+        <div class="lang-switch">
+          <button id="btn-pt" class="lang-btn active" aria-label="Português">PT</button>
+          <span class="lang-sep">/</span>
+          <button id="btn-en" class="lang-btn" aria-label="English">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero">
+    <img class="hero-img" src="hero-principal.jpg" alt="Michéle em prática de yoga">
+  </header>
+
+  <!-- A JORNADA -->
+  <section id="sobre">
+    <h2 data-i18n="journey.heading">A Jornada</h2>
+    <div class="section-inner">
+      <div class="grid-2">
+        <img src="sobre-michele.jpg" alt="Sobre Michéle Bavaresco">
+        <div class="copy">
+          <p data-i18n="journey.p1">Nasci no Brasil e há muitos anos vivo no exterior. Deixei minha terra natal movida pelo desejo de explorar e sair da zona de conforto. Foi na busca por sentido que encontrei o yoga — um caminho de cura, transformação e reencontro.</p>
+          <p data-i18n="journey.p2">Vivi seis anos na Nova Zelândia, onde conheci minha professora, cuja autenticidade e presença me inspiraram profundamente. Mais tarde, na Índia, mergulhei em práticas como Vipassana, Shatkarmas, Cosmic Yoga, Hatha Yoga e Vinyasa. Com o tempo, compreendi que o yoga não era apenas uma prática pessoal — era um conhecimento para ser compartilhado.</p>
+          <p data-i18n="journey.p3">O yoga me curou e segue me ensinando quem sou. Ele é filosofia, medicina e caminho de vida. Hoje, dedico-me a guiar outras pessoas nesse processo de redescoberta e de retorno ao que somos na essência.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTAS -->
+  <section id="ofertas">
+    <h2 data-i18n="offerings.heading">Ofertas</h2>
+    <div class="section-inner">
+      <div class="grid-2">
+        <div class="copy ofertas-copy">
+          <p data-i18n="offerings.p1">Ofereço espaços onde o movimento se torna meditação — um convite para enraizar, liberar e ascender.</p>
+          <p data-i18n="offerings.p2">Uma combinação de <strong>Yoga Asanas</strong>, <strong>Meditação</strong>, <strong>Kriyas</strong> e <strong>Yoga Nidra</strong>.</p>
+          <p data-i18n="offerings.p3"><strong>Yoga Nidra</strong> é a arte de se render à imobilidade — onde corpo e mente descansam e o ser desperta para sua natureza essencial. Essa prática de descanso consciente restaura a energia, cura o corpo sutil e abre a porta para a calma infinita que habita dentro de nós.</p>
+          <p data-i18n="offerings.formatsTitle"><strong>Formatos disponíveis:</strong></p>
+          <ul>
+            <li><strong data-i18n="offerings.group">Aulas em grupo e workshops</strong></li>
+            <li><strong data-i18n="offerings.private">Sessões individuais (1x1)</strong></li>
+            <li><strong data-i18n="offerings.retiros">Retiros</strong></li>
+          </ul>
+        </div>
+        <img src="aulas.jpg" alt="Prática de yoga na praia">
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios">
+    <h2 data-i18n="benefits.heading">Benefícios do Yoga</h2>
+    <div class="section-inner">
+      <div class="beneficios">
+        <a class="card" href="https://www.youtube.com/@SEU_CANAL" target="_blank" rel="noopener">
+          <h3 data-i18n="cards.youtube">Experimente uma aula no YouTube</h3>
+          <img src="galeria-1.jpg" alt="Banner YouTube">
+        </a>
+        <a class="card" href="https://wa.me/351924418425" target="_blank" rel="noopener">
+          <h3 data-i18n="cards.whatsapp">Agende sua prática no WhatsApp</h3>
+          <img src="galeria-3.jpg" alt="Banner WhatsApp">
+        </a>
+        <a class="card" href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener">
+          <h3 data-i18n="cards.instagram">Descubra minha jornada no Instagram</h3>
+          <img src="galeria-4.jpg" alt="Banner Instagram">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMENTÁRIOS -->
+  <section id="comentarios">
+    <h2 data-i18n="comments.heading">Comentários</h2>
+    <div class="section-inner">
+      <p data-i18n="comments.note" style="margin-bottom:1rem;color:var(--texto-suave);">
+        Use sua conta GitHub para comentar. Os comentários aparecem aqui imediatamente.
+      </p>
+      <script src="https://giscus.app/client.js"
+              data-repo="SEU_USUARIO/SEU_REPOSITORIO"
+              data-repo-id="SEU_REPO_ID"
+              data-category="General"
+              data-category-id="SUA_CATEGORY_ID"
+              data-mapping="pathname"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-theme="light"
+              data-lang="pt"
+              crossorigin="anonymous"
+              async>
+      </script>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <h2 data-i18n="contact.heading">Contato</h2>
+    <div class="section-inner" style="text-align:center;">
+      <p style="max-width:650px;margin:0 auto 1rem;" data-i18n="contact.p">
+        Se você sente o chamado para essa jornada interior, entre em contato e vamos conversar sobre o formato que mais ressoa com você.
+      </p>
+      <div class="contatos">
+        <a href="https://wa.me/351924418425" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:michellebavaresco@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>&copy; 2025 Michéle Bavaresco — Despertar Incorporado</p>
+    <div class="icons">
+      <a href="https://wa.me/351924418425" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:michellebavaresco@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </footer>
+
+  <!-- TRADUÇÃO -->
+  <script>
+    const i18n = {
+      pt: {
+        "nav.journey":"A Jornada","nav.offerings":"Ofertas","nav.benefits":"Benefícios","nav.comments":"Comentários","nav.contact":"Contato",
+        "journey.heading":"A Jornada",
+        "journey.p1":"Nasci no Brasil e há muitos anos vivo no exterior...",
+        "journey.p2":"Vivi seis anos na Nova Zelândia...",
+        "journey.p3":"O yoga me curou e segue me ensinando...",
+        "offerings.heading":"Ofertas",
+        "offerings.p1":"Ofereço espaços onde o movimento se torna meditação...",
+        "offerings.p2":"Uma combinação de <strong>Yoga Asanas</strong>, <strong>Meditação</strong>...",
+        "offerings.p3":"<strong>Yoga Nidra</strong> é a arte de se render...",
+        "offerings.formatsTitle":"<strong>Format

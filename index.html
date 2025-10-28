@@ -6,67 +6,58 @@
 <title>Michéle Bavaresco — Embodied Awakening</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-:root {
-  --cream: #FFF9F3;
-  --sand:  #F1E5D7;
-  --wood:  #8B623E;  /* acento quente */
-  --sage:  #6D846E;  /* ação/hover */
-  --ink:   #2E241E;  /* texto */
-  --line:  rgba(46,36,30,.12);
-  --shadow: 0 10px 28px rgba(0,0,0,.08);
+:root{
+  --cream:#FFF9F3;
+  --sand:#F1E5D7;
+  --ink:#2E241E;
+  --wood:#8B623E;
+  --sage:#6D846E;
+  --line:rgba(46,36,30,.14);
+  --shadow:0 10px 26px rgba(0,0,0,.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{
-  background: radial-gradient(1200px 600px at 10% -10%, #fff 0%, var(--cream) 60%, #FCEEDC 100%);
+  background:radial-gradient(1200px 600px at 10% -10%, #fff 0%, var(--cream) 60%, #FCEEDC 100%);
   color:var(--ink);
-  font:16px/1.75 "Manrope", system-ui, -apple-system, sans-serif;
+  font:16px/1.75 "Manrope",system-ui,-apple-system,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
-/* NAV (minimal: só marca e hambúrguer) */
+/* NAV mínima (marca + hambúrguer à direita) */
 nav{
   position:fixed; inset:0 0 auto 0; z-index:1000;
   background:var(--sand);
   border-bottom:1px solid var(--line);
-  box-shadow:0 6px 24px rgba(139,98,62,.09);
+  box-shadow:0 8px 28px rgba(139,98,62,.1);
 }
 .nav-inner{
-  max-width:1120px; margin:auto; padding:.8rem 1rem;
+  max-width:1120px; margin:auto; padding:.85rem 1rem;
   display:flex; align-items:center; justify-content:space-between;
 }
-/* >>> MAIS NOTORIEDADE NO NOME (sem enfeites) */
 .brand{
-  font-family:'Cinzel',serif;
-  letter-spacing:.18em; text-transform:uppercase;
-  font-weight:500;
-  font-size:clamp(1.1rem, 1.6vw + .4rem, 2rem);
-  color:var(--wood);
+  font-family:'Cinzel',serif; letter-spacing:.14em; text-transform:uppercase;
+  font-size:1rem; color:var(--wood); white-space:nowrap;
 }
 .brand a{ text-decoration:none; color:inherit }
+.burger{ background:none; border:0; font-size:1.25rem; cursor:pointer; color:var(--ink) }
 
-/* ícone hambúrguer (tudo mais fica no menu lateral) */
-.burger{
-  background:none; border:0; font-size:1.35rem; cursor:pointer; color:var(--ink);
-}
-
-/* MENU LATERAL DIREITO */
+/* MENU LATERAL (direita) */
 .sheet{
-  position:fixed; inset:0 0 0 auto; width:320px; max-width:88%;
-  background:var(--sand); transform:translateX(110%); transition:.3s ease; z-index:1100;
+  position:fixed; inset:0 0 0 auto; width:340px; max-width:88%;
+  background:var(--sand);
+  transform:translateX(110%); transition:.32s ease; z-index:1100;
   border-left:1px solid var(--line);
-  box-shadow:-16px 0 40px rgba(0,0,0,.12);
+  box-shadow:-18px 0 40px rgba(0,0,0,.14);
   display:flex; flex-direction:column; padding:1.1rem;
 }
 .sheet.open{ transform:translateX(0) }
-.sheet .close{
-  align-self:flex-end; background:none; border:0; font-size:1.25rem; cursor:pointer; color:var(--ink);
-}
+.sheet .close{ align-self:flex-end; background:none; border:0; font-size:1.25rem; cursor:pointer; color:var(--ink) }
 .sheet h4{
   font-family:'Cinzel',serif; letter-spacing:.12em; text-transform:uppercase; color:var(--wood);
   margin:.2rem 0 1rem;
@@ -77,53 +68,46 @@ nav{
 }
 .sheet a:hover{ background:var(--sage); color:#fff }
 .sheet .sub{ margin:.25rem 0 .9rem .9rem; border-left:2px solid var(--line); padding-left:.8rem }
-.sheet .lang{ display:flex; gap:.4rem; margin-top:.6rem }
+.sheet .lang{ display:flex; gap:.5rem; margin-top:1rem }
 .sheet .lang button{
   border:1px solid var(--line); background:#fff; color:var(--ink);
-  padding:.38rem .8rem; border-radius:999px; font-weight:800; font-size:.85rem; cursor:pointer;
+  padding:.42rem .9rem; border-radius:999px; font-weight:800; font-size:.85rem; cursor:pointer;
 }
 .sheet .lang button.active{ background:var(--sage); color:#fff; border-color:transparent }
 
-/* HERO (sem overlay) */
+/* HERO sem overlay */
 header{
   position:relative; height:90vh; min-height:560px;
   display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
-.hero-img{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; object-position:center 30%;
-}
+.hero-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; }
 
-/* SEÇÕES */
+/* Seções */
 section{ padding:5rem 1.2rem 3.75rem; max-width:1120px; margin:auto }
 .section-title{
   display:block; text-align:center; background:var(--sand);
-  padding:.85rem 1.25rem; border-radius:12px; box-shadow:var(--shadow);
-  color:var(--wood); font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin-bottom:2rem;
+  padding:.9rem 1.25rem; border-radius:12px; box-shadow:var(--shadow);
+  color:var(--wood); font-family:"Cormorant Garamond",serif; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; margin-bottom:2rem;
 }
 .panel{
   background:#fff; border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); padding:2.25rem;
 }
-.grid-2{
-  display:grid; grid-template-columns:1fr 1fr; gap:2.25rem; align-items:center;
-}
-/* >>> Padroniza proporção das images grandes (sobre/aulas) SEM mexer no hero */
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:2.25rem; align-items:center }
 .grid-2 img{
   width:100%; border-radius:18px; object-fit:cover; box-shadow:var(--shadow);
-  aspect-ratio: 4/3; /* todas no mesmo formato harmonioso */
 }
+h2, h3{ font-family:"Cormorant Garamond",serif; }
 
-/* MINI EXPLICAÇÕES (Offerings) */
-.mini-grid{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; margin-top:1.25rem;
-}
+/* Mini explicações (ofertas) */
+.mini-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; margin-top:1.25rem }
 .mini-card{
   background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:1rem 1.1rem;
 }
-.mini-card h3{ font-weight:800; font-size:1rem; color:var(--ink) }
-.mini-card p{ font-size:.95rem; opacity:.92; margin-top:.4rem }
+.mini-card h3{ font-weight:600; font-size:1.05rem; color:var(--ink) }
+.mini-card p{ font-size:.95rem; opacity:.92; margin-top:.35rem }
 
-/* CARDS com IMAGENS (Links) — padronização total */
+/* Cards com imagens (benefícios/links) */
 .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem }
 .card{
   background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow);
@@ -131,13 +115,13 @@ section{ padding:5rem 1.2rem 3.75rem; max-width:1120px; margin:auto }
   transition:transform .22s, box-shadow .22s;
 }
 .card:hover{ transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,.1) }
-.card h3{ color:var(--wood); text-align:center; letter-spacing:.06em; font-weight:800 }
+.card h3{ color:var(--wood); text-align:center; letter-spacing:.06em; font-weight:600 }
+.card img{
+  width:100%; border-radius:12px; border:1px solid var(--line);
+  aspect-ratio:4/3; object-fit:cover; /* padroniza tamanhos */
+}
 
-/* >>> wrapper com ratio fixo garante igualdade REAL das thumbs */
-.card .thumb{ width:100%; aspect-ratio:4/3; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
-.card .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-/* CONTATO */
+/* Contato */
 .contact-ctas{ display:flex; justify-content:center; gap:20px; margin-top:1rem }
 .icon-btn{
   width:54px; height:54px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
@@ -145,31 +129,28 @@ section{ padding:5rem 1.2rem 3.75rem; max-width:1120px; margin:auto }
 }
 .icon-btn:hover{ background:var(--sage); color:#fff; transform:translateY(-3px) }
 
-/* RODAPÉ */
+/* Rodapé */
 footer{
-  background:linear-gradient(180deg,#3a2c21 0%,#2b221a 100%);
-  color:#fff; text-align:center; padding:2.2rem 1rem; font-size:.95rem;
+  background:linear-gradient(180deg,#3a2c21 0%,#2b221a 100%); color:#fff; text-align:center; padding:2.2rem 1rem; font-size:.95rem;
 }
 footer .icons{ display:flex; justify-content:center; gap:16px; margin-top:.75rem }
 footer .icons a{ color:#fff; font-size:1.2rem }
 
-/* RESPONSIVO */
+/* Responsivo */
 @media (max-width:980px){
   .grid-2{ grid-template-columns:1fr }
   .mini-grid{ grid-template-columns:1fr 1fr }
+  .cards{ grid-template-columns:1fr }
   header{ height:84vh }
-  /* >>> No mobile, mantém as thumbs exatamente iguais (altura confortável) */
-  .card .thumb{ aspect-ratio:auto; height:180px; }
 }
 @media (max-width:640px){
   .mini-grid{ grid-template-columns:1fr }
-  .cards{ grid-template-columns:1fr } /* 1 por linha para respirar melhor */
 }
 </style>
 </head>
 <body>
 
-<!-- NAV mínima -->
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <div class="brand"><a href="#hero">Michéle&nbsp;Bavaresco</a></div>
@@ -177,7 +158,7 @@ footer .icons a{ color:#fff; font-size:1.2rem }
   </div>
 </nav>
 
-<!-- MENU LATERAL (contém toda a navegação e EN/PT) -->
+<!-- MENU LATERAL -->
 <aside class="sheet" id="sheet" aria-hidden="true">
   <button class="close" id="closeSheet" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
   <h4>Menu</h4>
@@ -192,14 +173,13 @@ footer .icons a{ color:#fff; font-size:1.2rem }
   <a href="#comments" data-i18n="nav.comments" onclick="closeSheet()">Comments</a>
   <a href="#contact" data-i18n="nav.contact" onclick="closeSheet()">Contact</a>
 
-  <!-- Troca de idioma dentro do menu -->
-  <div class="lang" style="margin-top:.8rem">
+  <div class="lang">
     <button id="btn-en" class="active">EN</button>
     <button id="btn-pt">PT</button>
   </div>
 </aside>
 
-<!-- HERO (não alterado) -->
+<!-- HERO -->
 <header id="hero" aria-label="Hero image">
   <img class="hero-img" src="hero-principal.jpg" alt="Michéle practicing yoga">
 </header>
@@ -211,15 +191,9 @@ footer .icons a{ color:#fff; font-size:1.2rem }
     <img src="sobre-michele.jpg" alt="About Michéle Bavaresco">
     <div>
       <h2 data-i18n="about.h">Rooted path</h2>
-      <p data-i18n="about.p1">
-        I was born in Brazil and have lived abroad for many years. I left my home moved by the wish to explore and step out of the comfort zone. In the search for meaning I found yoga — a path of healing, transformation and return to what is essential.
-      </p>
-      <p data-i18n="about.p2">
-        I lived six years in New Zealand, where I met my teacher, whose authenticity and presence inspired me deeply. Later, in India, I immersed myself in practices such as Vipassana, Shatkarmas, Cosmic Yoga, Hatha and Vinyasa. With time I understood yoga was not only a personal practice — it was knowledge meant to be shared.
-      </p>
-      <p data-i18n="about.p3">
-        Yoga healed me and keeps reminding me who I am. It is philosophy, medicine and a way of living. Today I dedicate myself to holding simple and sincere spaces for others to rediscover themselves — to ground, soften and rise.
-      </p>
+      <p data-i18n="about.p1">I was born in Brazil and have lived abroad for many years. I left my home moved by the wish to explore and step out of the comfort zone. In the search for meaning I found yoga — a path of healing, transformation and return to what is essential.</p>
+      <p data-i18n="about.p2">I lived six years in New Zealand, where I met my teacher, whose authenticity and presence inspired me deeply. Later, in India, I immersed myself in practices such as Vipassana, Shatkarmas, Cosmic Yoga, Hatha and Vinyasa. With time I understood yoga was not only a personal practice — it was knowledge meant to be shared.</p>
+      <p data-i18n="about.p3">Yoga healed me and keeps reminding me who I am. It is philosophy, medicine and a way of living. Today I dedicate myself to holding simple and sincere spaces for others to rediscover themselves — to ground, soften and rise.</p>
     </div>
   </div>
 </section>
@@ -230,17 +204,13 @@ footer .icons a{ color:#fff; font-size:1.2rem }
   <div class="panel grid-2">
     <div>
       <h2 data-i18n="offerings.h">Movement as meditation</h2>
-      <p data-i18n="offerings.intro">
-        A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.
-      </p>
+      <p data-i18n="offerings.intro">A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.</p>
       <ul style="margin-left:1rem">
         <li data-i18n="offerings.li1">1×1: personalized sessions for your body and rhythm.</li>
         <li data-i18n="offerings.li2">Group sessions: gentle community practice, all levels welcome.</li>
         <li data-i18n="offerings.li3">Retreats: immersive time to slow down and renew.</li>
       </ul>
-      <p data-i18n="offerings.nidra">
-        <strong>Yoga Nidra</strong> is conscious rest — where body and mind soften and the being awakens to its natural clarity.
-      </p>
+      <p data-i18n="offerings.nidra"><strong>Yoga Nidra</strong> is conscious rest — where body and mind soften and the being awakens to its natural clarity.</p>
     </div>
     <img src="aulas.jpg" alt="Yoga practice by the sea">
   </div>
@@ -266,50 +236,53 @@ footer .icons a{ color:#fff; font-size:1.2rem }
   </div>
 </section>
 
-<!-- BENEFITS / LINKS (com imagens padronizadas) -->
+<!-- BENEFITS / LINKS -->
 <section id="benefits" aria-labelledby="benefits-title">
   <span class="section-title" id="benefits-title" data-i18n="benefits.title">Benefits / Links</span>
   <div class="panel">
     <div class="cards">
-      <a class="card" href="https://www.youtube.com/@SEU_CANAL" target="_blank" rel="noopener" aria-label="YouTube">
-        <div class="thumb"><img src="galeria-1.jpg" alt="YouTube"></div>
+      <a class="card" href="https://www.youtube.com/@SEU_CANAL" target="_blank" rel="noopener">
         <h3 data-i18n="cards.youtube">Try a class on YouTube</h3>
+        <img src="galeria-1.jpg" alt="YouTube">
       </a>
-      <a class="card" href="https://wa.me/351924418425" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <div class="thumb"><img src="galeria-3.jpg" alt="WhatsApp"></div>
+      <a class="card" href="https://wa.me/351924418425" target="_blank" rel="noopener">
         <h3 data-i18n="cards.whatsapp">Book via WhatsApp</h3>
+        <img src="galeria-3.jpg" alt="WhatsApp">
       </a>
-      <a class="card" href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener" aria-label="Instagram">
-        <div class="thumb"><img src="galeria-4.jpg" alt="Instagram"></div>
+      <a class="card" href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener">
         <h3 data-i18n="cards.instagram">Follow on Instagram</h3>
+        <img src="galeria-4.jpg" alt="Instagram">
       </a>
     </div>
   </div>
 </section>
 
-<!-- COMMENTS (opcional: Giscus; preencha IDs se quiser usar) -->
+<!-- COMMENTS (Giscus) -->
 <section id="comments" aria-labelledby="comments-title">
   <span class="section-title" id="comments-title" data-i18n="comments.title">Comments</span>
   <div class="panel">
-    <p data-i18n="comments.note">Log in with your GitHub account to comment. Your message appears here immediately.</p>
-    <!--
+    <p data-i18n="comments.note" style="margin-bottom:1rem;opacity:.9">
+      Log in with your GitHub account to comment. Your message appears here immediately.
+    </p>
     <script src="https://giscus.app/client.js"
-      data-repo="USUARIO/REPO"           <!-- ajuste -->
-      data-repo-id=""                    <!-- ajuste -->
-      data-category="General"
-      data-category-id=""                <!-- ajuste -->
-      data-mapping="pathname"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-theme="light"
-      data-lang="en"
-      crossorigin="anonymous"
-      async></script>
-    -->
+            data-repo="michelebavaresco/michele-bavaresco-site"
+            data-repo-id="R_kgDOQKQfBA"
+            data-category="General"
+            data-category-id="DIC_kwDOQKQfBM4CxLo7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
   </div>
 </section>
 
-<!-- CONTATO -->
+<!-- CONTACT -->
 <section id="contact" aria-labelledby="contact-title">
   <span class="section-title" id="contact-title" data-i18n="contact.title">Contact</span>
   <div class="panel" style="text-align:center">
@@ -332,7 +305,7 @@ footer .icons a{ color:#fff; font-size:1.2rem }
   </div>
 </footer>
 
-<!-- INTERAÇÃO -->
+<!-- INTERAÇÃO (menu + i18n + giscus lang) -->
 <script>
   // Menu lateral
   const sheet = document.getElementById('sheet');
@@ -341,116 +314,86 @@ footer .icons a{ color:#fff; font-size:1.2rem }
   function closeSheet(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); }
 
   // i18n
-  const i18n = {
+  const dict = {
     en: {
       "nav.about":"About me","nav.offerings":"Offerings","nav.benefits":"Benefits","nav.comments":"Comments","nav.contact":"Contact",
       "offerings._1x1":"• 1x1","offerings._groups":"• Group sessions","offerings._retreats":"• Retreats",
-
       "about.title":"About me","about.h":"Rooted path",
       "about.p1":"I was born in Brazil and have lived abroad for many years. I left my home moved by the wish to explore and step out of the comfort zone. In the search for meaning I found yoga — a path of healing, transformation and return to what is essential.",
-      "about.p2":"I lived six years in New Zealand, where I met my teacher, whose authenticity and presence inspired me deeply. Later, in India, I immersed myself in practices such as Vipassana, Shatkarmas, Cosmic Yoga, Hatha and Vinyasa. With time I understood yoga wasn’t only a personal practice — it was knowledge meant to be shared.",
+      "about.p2":"I lived six years in New Zealand, where I met my teacher, whose authenticity and presence inspired me deeply. Later, in India, I immersed myself in practices such as Vipassana, Shatkarmas, Cosmic Yoga, Hatha and Vinyasa. With time I understood yoga was not only a personal practice — it was knowledge meant to be shared.",
       "about.p3":"Yoga healed me and keeps reminding me who I am. It is philosophy, medicine and a way of living. Today I dedicate myself to holding simple and sincere spaces for others to rediscover themselves — to ground, soften and rise.",
-
       "offerings.title":"Offerings","offerings.h":"Movement as meditation",
       "offerings.intro":"A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.",
       "offerings.li1":"1×1: personalized sessions for your body and rhythm.",
       "offerings.li2":"Group sessions: gentle community practice, all levels welcome.",
       "offerings.li3":"Retreats: immersive time to slow down and renew.",
       "offerings.nidra":"<strong>Yoga Nidra</strong> is conscious rest — where body and mind soften and the being awakens to its natural clarity.",
-
       "micro.nidra.title":"Yoga Nidra","micro.nidra.desc":"Conscious rest to restore energy and soften the mind.",
       "micro.hatha.title":"Hatha","micro.hatha.desc":"Grounded asanas + breath for clarity and steadiness.",
       "micro.meditation.title":"Meditation","micro.meditation.desc":"Simple techniques to cultivate presence in daily life.",
       "micro.kriyas.title":"Kriyas","micro.kriyas.desc":"Purifying practices to balance the subtle body.",
-
       "benefits.title":"Benefits / Links",
       "cards.youtube":"Try a class on YouTube",
       "cards.whatsapp":"Book via WhatsApp",
       "cards.instagram":"Follow on Instagram",
-
       "comments.title":"Comments",
       "comments.note":"Log in with your GitHub account to comment. Your message appears here immediately.",
-
       "contact.title":"Contact",
       "contact.p":"If this work resonates, write to me and we’ll find the format that best suits your moment."
     },
     pt: {
       "nav.about":"Sobre mim","nav.offerings":"Ofertas","nav.benefits":"Benefícios","nav.comments":"Comentários","nav.contact":"Contato",
       "offerings._1x1":"• 1x1","offerings._groups":"• Aulas em grupo","offerings._retreats":"• Retiros",
-
       "about.title":"Sobre mim","about.h":"Caminho enraizado",
       "about.p1":"Nasci no Brasil e há muitos anos vivo no exterior. Saí de casa movida pelo desejo de explorar e sair da zona de conforto. Na busca por sentido encontrei o yoga — um caminho de cura, transformação e retorno ao essencial.",
       "about.p2":"Vivi seis anos na Nova Zelândia, onde conheci minha professora, cuja autenticidade e presença me inspiraram profundamente. Mais tarde, na Índia, mergulhei em práticas como Vipassana, Shatkarmas, Cosmic Yoga, Hatha e Vinyasa. Com o tempo, compreendi que o yoga não era apenas uma prática pessoal — era um conhecimento a ser compartilhado.",
       "about.p3":"O yoga me curou e segue me lembrando quem sou. É filosofia, medicina e modo de viver. Hoje me dedico a sustentar espaços simples e sinceros para que outras pessoas se redescubram — para enraizar, suavizar e ascender.",
-
       "offerings.title":"Ofertas","offerings.h":"Movimento como meditação",
       "offerings.intro":"Um entrelaço suave de <strong>Hatha</strong>, <strong>Meditação</strong>, <strong>Kriyas</strong> e <strong>Yoga Nidra</strong>, adaptado ao momento.",
       "offerings.li1":"1×1: sessões personalizadas para o seu corpo e ritmo.",
       "offerings.li2":"Aulas em grupo: prática comunitária gentil, todos os níveis.",
       "offerings.li3":"Retiros: tempo imersivo para desacelerar e renovar.",
       "offerings.nidra":"<strong>Yoga Nidra</strong> é descanso consciente — onde corpo e mente se suavizam e o ser desperta para sua clareza natural.",
-
       "micro.nidra.title":"Yoga Nidra","micro.nidra.desc":"Descanso consciente para restaurar a energia e acalmar a mente.",
       "micro.hatha.title":"Hatha","micro.hatha.desc":"Asanas enraizados + respiração para clareza e estabilidade.",
       "micro.meditation.title":"Meditação","micro.meditation.desc":"Técnicas simples para cultivar presença no cotidiano.",
       "micro.kriyas.title":"Kriyas","micro.kriyas.desc":"Práticas purificadoras para equilibrar o corpo sutil.",
-
       "benefits.title":"Benefícios / Links",
       "cards.youtube":"Experimente uma aula no YouTube",
       "cards.whatsapp":"Agende pelo WhatsApp",
       "cards.instagram":"Acompanhe no Instagram",
-
       "comments.title":"Comentários",
       "comments.note":"Entre com sua conta do GitHub para comentar. A mensagem aparece aqui imediatamente.",
-
       "contact.title":"Contato",
       "contact.p":"Se este trabalho ressoar, escreva-me e encontraremos o formato que melhor acolhe o seu momento."
     }
   };
 
   function applyI18n(lang){
-    const dict = i18n[lang] || i18n.en;
+    const d = dict[lang] || dict.en;
     document.documentElement.setAttribute('lang', lang);
     document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
-      if (!dict[key]) return;
-      el.innerHTML = dict[key];
+      const k = el.getAttribute('data-i18n');
+      if(d[k]) el.innerHTML = d[k];
     });
-    // toggles no menu
     document.getElementById('btn-en').classList.toggle('active', lang==='en');
     document.getElementById('btn-pt').classList.toggle('active', lang==='pt');
-    // Giscus (se ativar) mudaria o data-lang aqui
-    const g = document.querySelector('script[src*="giscus.app"]');
-    if (g) g.setAttribute('data-lang', lang);
+    // Atualiza Giscus (postMessage na iframe)
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { lang: lang } } },
+        'https://giscus.app'
+      );
+    }
     localStorage.setItem('lang', lang);
   }
 
-  // listeners idioma (dentro do menu)
   document.getElementById('btn-en').addEventListener('click', ()=>applyI18n('en'));
   document.getElementById('btn-pt').addEventListener('click', ()=>applyI18n('pt'));
 
-  // inicia em EN (ou último salvo)
+  // inicia no último salvo (ou EN)
   applyI18n(localStorage.getItem('lang') || 'en');
 </script>
-<!-- Seção de comentários -->
-<div id="comments" class="comments-section">
-  <h2>Comentários</h2>
-  <script src="https://giscus.app/client.js"
-          data-repo="michelebavaresco/michele-bavaresco-site"
-          data-repo-id="R_kgDOQKQfBA"
-          data-category="General"
-          data-category-id="DIC_kwDOQKQfBM4CxLo7"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="preferred_color_scheme"
-          data-lang="pt"
-          crossorigin="anonymous"
-          async>
-  </script>
-</div>
 </body>
 </html>
-

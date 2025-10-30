@@ -30,19 +30,32 @@
       -webkit-font-smoothing:antialiased;
     }
 
-    /* NAV topo (mínimo) */
+    /* NAV topo (ajustada) */
     nav{
       position:fixed; inset:0 0 auto 0; z-index:1000;
-      background:var(--sand); border-bottom:1px solid var(--line);
+      background:var(--sand);
+      border-bottom:1px solid var(--line);
       box-shadow:0 6px 24px rgba(139,98,62,.09);
+      height:64px;
     }
     .nav-inner{
-      max-width:1120px; margin:auto; padding:.8rem 1rem;
-      display:flex; align-items:center; justify-content:space-between;
+      max-width:1120px;
+      margin:auto;
+      height:64px;
+      padding:0 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
+    /* destaque no nome */
     .brand{
-      font-family:'Cinzel',serif; letter-spacing:.14em; text-transform:uppercase;
-      font-size:1rem; color:var(--wood);
+      font-family:'Cinzel',serif;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:1.28rem;         /* maior sem estourar a barra */
+      color:var(--wood);
+      line-height:1;
+      white-space:nowrap;
     }
     .brand a{ text-decoration:none; color:inherit }
     .burger{ background:none; border:0; font-size:1.25rem; cursor:pointer; color:var(--ink); }
@@ -53,21 +66,24 @@
       background:var(--sand); transform:translateX(110%); transition:.3s ease; z-index:1100;
       border-left:1px solid var(--line);
       box-shadow:-16px 0 40px rgba(0,0,0,.12);
-      display:flex; flex-direction:column; padding:1.1rem;
+      display:flex; flex-direction:column; padding:1.1rem 1.1rem 1.4rem;
+      gap:.35rem;
     }
     .sheet.open{ transform:translateX(0) }
     .sheet .close{ align-self:flex-end; background:none; border:0; font-size:1.25rem; cursor:pointer; color:var(--ink); }
-    .sheet h4{ font-family:'Cinzel',serif; letter-spacing:.12em; text-transform:uppercase; color:var(--wood); margin:.2rem 0 1rem; }
+
+    /* removi o título MENU – só links */
     .sheet a{
       display:block; text-decoration:none; color:var(--ink);
-      font-weight:700; padding:.7rem .6rem; border-radius:10px; transition:.2s;
+      font-weight:700; padding:.6rem .4rem; border-radius:10px; transition:.2s;
     }
     .sheet a:hover{ background:var(--sage); color:#fff }
-    .sheet .sub{ margin:.25rem 0 .9rem .9rem; border-left:2px solid var(--line); padding-left:.8rem }
-    .sheet .lang{ display:flex; gap:.4rem; margin-top:.8rem }
+    .sheet .sub{ margin:.25rem 0 .9rem 1.2rem; border-left:2px solid var(--line); padding-left:.8rem }
+    .sheet .lang{ display:flex; gap:.4rem; margin-top:auto } /* cola no fim */
     .sheet .lang button{
       border:1px solid var(--line); background:#fff; color:var(--ink);
       padding:.38rem .8rem; border-radius:999px; font-weight:800; font-size:.85rem; cursor:pointer;
+      transition:.18s;
     }
     .sheet .lang button.active{ background:var(--sage); color:#fff; border-color:transparent }
 
@@ -125,6 +141,7 @@
     }
     @media (max-width:640px){
       .mini-grid{ grid-template-columns:1fr }
+      .brand{ font-size:1.1rem; }
     }
   </style>
 </head>
@@ -138,10 +155,10 @@
     </div>
   </nav>
 
-  <!-- MENU LATERAL -->
+  <!-- MENU LATERAL (sem título MENU) -->
   <aside class="sheet" id="sheet" aria-hidden="true">
     <button class="close" id="closeSheet" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-    <h4>Menu</h4>
+
     <a href="#about" data-i18n="nav.about" onclick="closeSheet()">About me</a>
     <a href="#offerings" data-i18n="nav.offerings" onclick="closeSheet()">Offerings</a>
     <div class="sub">
@@ -171,9 +188,15 @@
       <img src="sobre-michele.jpg" alt="About Michéle Bavaresco">
       <div>
         <h2 data-i18n="about.h">Rooted path</h2>
-        <p data-i18n="about.p1">I was born in Brazil and have lived abroad for many years. I left my home moved by the wish to explore and step out of the comfort zone. In the search for meaning I found yoga — a path of healing, transformation and return to what is essential.</p>
-        <p data-i18n="about.p2">I lived six years in New Zealand, where I met my teacher, whose authenticity and presence inspired me deeply. Later, in India, I immersed myself in practices such as Vipassana, Shatkarmas, Cosmic Yoga, Hatha and Vinyasa. With time I understood yoga was not only a personal practice — it was knowledge meant to be shared.</p>
-        <p data-i18n="about.p3">Yoga healed me and keeps reminding me who I am. It is philosophy, medicine and a way of living. Today I dedicate myself to holding simple and sincere spaces for others to rediscover themselves — to ground, soften and rise.</p>
+        <p data-i18n="about.p1">
+          I was born in Brazil and have lived abroad for many years. I left my home moved by the wish to explore and step out of the comfort zone. In the search for meaning I found yoga — a path of healing, transformation and return to what is essential.
+        </p>
+        <p data-i18n="about.p2">
+          I lived six years in New Zealand, where I met my teacher, whose authenticity and presence inspired me deeply. Later, in India, I immersed myself in practices such as Vipassana, Shatkarmas, Cosmic Yoga, Hatha and Vinyasa. With time I understood yoga was not only a personal practice — it was knowledge meant to be shared.
+        </p>
+        <p data-i18n="about.p3">
+          Yoga healed me and keeps reminding me who I am. It is philosophy, medicine and a way of living. Today I dedicate myself to holding simple and sincere spaces for others to rediscover themselves — to ground, soften and rise.
+        </p>
       </div>
     </div>
   </section>
@@ -184,13 +207,17 @@
     <div class="panel grid-2">
       <div>
         <h2 data-i18n="offerings.h">Movement as meditation</h2>
-        <p data-i18n="offerings.intro">A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.</p>
+        <p data-i18n="offerings.intro">
+          A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.
+        </p>
         <ul style="margin-left:1rem">
           <li data-i18n="offerings.li1">1×1: personalized sessions for your body and rhythm.</li>
           <li data-i18n="offerings.li2">Group sessions: gentle community practice, all levels welcome.</li>
           <li data-i18n="offerings.li3">Retreats: immersive time to slow down and renew.</li>
         </ul>
-        <p data-i18n="offerings.nidra"><strong>Yoga Nidra</strong> is conscious rest — where body and mind soften and the being awakens to its natural clarity.</p>
+        <p data-i18n="offerings.nidra">
+          <strong>Yoga Nidra</strong> is conscious rest — where body and mind soften and the being awakens to its natural clarity.
+        </p>
       </div>
       <img src="aulas.jpg" alt="Yoga practice by the sea">
     </div>
@@ -297,7 +324,7 @@
     document.getElementById('closeSheet').addEventListener('click', ()=>{ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); });
     function closeSheet(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); }
 
-    // i18n
+    // dicionário completo
     const i18n = {
       en: {
         "nav.about":"About me","nav.offerings":"Offerings","nav.benefits":"Benefits","nav.comments":"Comments","nav.contact":"Contact",
@@ -377,31 +404,23 @@
       document.getElementById('btn-en').classList.toggle('active', lang==='en');
       document.getElementById('btn-pt').classList.toggle('active', lang==='pt');
 
-      // atualiza o Giscus já carregado
+      // atualiza idioma do Giscus (postMessage)
       const iframe = document.querySelector('iframe.giscus-frame');
       if (iframe) {
         iframe.contentWindow.postMessage(
-          {
-            giscus: {
-              setConfig: {
-                lang: lang,
-                theme: "https://michelebavaresco.github.io/michele-bavaresco-site/css/giscus-theme.css"
-              }
-            }
-          },
-          "https://giscus.app"
+          { giscus: { setConfig: { lang: lang } } },
+          'https://giscus.app'
         );
       }
-
-      // salva
-      localStorage.setItem('lang', lang);
     }
 
-    document.getElementById('btn-en').addEventListener('click', ()=>applyI18n('en'));
-    document.getElementById('btn-pt').addEventListener('click', ()=>applyI18n('pt'));
+    // botões
+    document.getElementById('btn-en').addEventListener('click', ()=>{ localStorage.setItem('lang','en'); applyI18n('en'); });
+    document.getElementById('btn-pt').addEventListener('click', ()=>{ localStorage.setItem('lang','pt'); applyI18n('pt'); });
 
-    // inicia com o que está salvo ou EN
-    applyI18n(localStorage.getItem('lang') || 'en');
+    // inicia em EN (ou última escolha)
+    const savedLang = localStorage.getItem('lang') || 'en';
+    applyI18n(savedLang);
   </script>
 </body>
 </html>

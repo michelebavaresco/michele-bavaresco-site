@@ -2,29 +2,32 @@
 :root {
   color-scheme: light;
 
-  /* cores base */
-  --color-fg-default:#2E241E;              /* texto principal */
-  --color-fg-muted:#6b5e56;                /* texto secundário */
-  --color-accent-fg:#8B623E;               /* links/acento */
-  --color-success-fg:#6D846E;              /* ícones de sucesso */
+  /* cores base do site */
+  --color-fg-default: #2E241E;          /* texto principal */
+  --color-fg-muted: #6b5e56;            /* texto secundário */
+  --color-accent-fg: #8B623E;           /* links/acento */
+  --color-success-fg: #6D846E;          /* ícones de sucesso */
 
-  --color-canvas-default:#ffffff;          /* fundo dos cards internos */
-  --color-canvas-subtle:#F1E5D7;           /* fundo sutil */
-  --color-border-default:rgba(46,36,30,.14);
-  --color-neutral-muted:rgba(46,36,30,.08);
+  --color-canvas-default: #ffffff;      /* fundo do card principal */
+  --color-canvas-subtle: #F1E5D7;       /* fundo de áreas neutras */
+  --color-border-default: rgba(46,36,30,.14);
+  --color-neutral-muted: rgba(46,36,30,.08);
 
   /* botões */
-  --color-btn-text:#2E241E;
-  --color-btn-bg:#ffffff;
-  --color-btn-border:rgba(46,36,30,.14);
-  --color-btn-hover-bg:#F1E5D7;
+  --color-btn-text: #2E241E;
+  --color-btn-bg: #ffffff;
+  --color-btn-border: rgba(46,36,30,.14);
+  --color-btn-hover-bg: #F1E5D7;
 
-  --color-btn-primary-text:#ffffff;
-  --color-btn-primary-bg:#6D846E;
-  --color-btn-primary-hover-bg:#5b715d;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #6D846E;
+  --color-btn-primary-hover-bg: #5b715d;
 
-  /* campos/abas */
-  --color-input-bg:#ffffff;
-  --color-input-border:rgba(46,36,30,.14);
-  --color-input-contrast-bg:#ffffff;
+  /* campos */
+  --color-input-bg: #ffffff;
+  --color-input-border: rgba(46,36,30,.14);
+  --color-input-contrast-bg: #ffffff;
+
+  /* abas do giscus */
+  --color-neutral-subtle: #F1E5D7;
 }

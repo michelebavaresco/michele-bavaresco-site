@@ -21,15 +21,8 @@
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
-    html{
-      scroll-behavior:smooth;
-      scroll-padding-top:80px;
-    }
-    body{
-      font-family:"Manrope",system-ui,-apple-system,sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-    }
+    html{scroll-behavior:smooth;scroll-padding-top:80px;}
+    body{font-family:"Manrope",system-ui,sans-serif;background:var(--bg);color:var(--ink);}
 
     /* fundo fixo */
     .bg-fixed{
@@ -66,25 +59,27 @@
     .brand-block{
       display:flex;
       flex-direction:column;
-      gap:.18rem;
+      align-items:center;       /* centraliza nome e subtítulo */
+      text-align:center;
     }
-    /* levemente menor */
     .brand{
       font-family:"Cinzel",serif;
-      font-size:1.8rem;
-      font-weight:400;
-      letter-spacing:.04em;
-      text-transform:none;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:1.5rem;
+      font-weight:500;
       color:var(--gold);
-      line-height:1;
+      text-decoration:none;
+      cursor:pointer;
     }
     .brand-sub{
       font-family:"Cinzel",serif;
-      font-size:.6rem;
-      letter-spacing:.3em;
+      font-size:.58rem;
+      letter-spacing:.28em;
       text-transform:uppercase;
-      color:rgba(0,0,0,.6);
-      text-align:center;
+      color:rgba(0,0,0,.55);
+      margin-top:.15rem;
+      white-space:nowrap;
     }
     .burger{
       background:none;border:0;
@@ -96,17 +91,14 @@
     /* menu lateral */
     .sheet{
       position:fixed;top:0;right:0;bottom:0;
-      width:250px;max-width:100%;
+      width:280px;max-width:100%;
       background:rgba(247,247,247,.96);
       backdrop-filter:blur(12px);
       transform:translateX(110%);
       transition:.3s ease;
       z-index:1000;
-      padding:1rem .5rem 1.3rem;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:.3rem;
+      padding:1.2rem .5rem 1.3rem;
+      display:flex;flex-direction:column;align-items:center;gap:.4rem;
     }
     .sheet.open{ transform:translateX(0); }
     .sheet .close{
@@ -115,27 +107,23 @@
       font-size:1.3rem;
       cursor:pointer;
       color:var(--ink);
-      margin-bottom:.5rem;
+      margin-bottom:.6rem;
     }
     .sheet a{
       width:100%;
       text-align:center;
-      padding:.45rem .5rem;
+      padding:.55rem .5rem;
       border-radius:8px;
       text-decoration:none;
       color:var(--ink);
       font-family:"Cinzel",serif;
       font-weight:400;
       letter-spacing:.04em;
-      text-transform:lowercase;
+      font-size:.9rem;
     }
     .sheet a:hover{ background:rgba(200,155,60,.18); }
 
-    .lang-switch{
-      margin-top:auto;
-      display:flex;
-      gap:.35rem;
-    }
+    .lang-switch{ margin-top:auto; display:flex; gap:.35rem; }
     .pill{
       border:0;
       background:rgba(42,42,42,.08);
@@ -154,15 +142,16 @@
       padding:0 1.1rem;
     }
 
+    /* mais espaço pra foto */
     .hero-gap{
-      height:58vh;
-      min-height:420px;
+      height:75vh;
+      min-height:520px;
     }
 
-    /* títulos em minúsculo, um pouco menores */
+    /* títulos */
     .section-title{
       font-family:"Cinzel",serif;
-      font-size:1.85rem;
+      font-size:1.5rem;         /* mesmo ar do nome */
       letter-spacing:.04em;
       margin-bottom:1.3rem;
       text-transform:lowercase;
@@ -174,8 +163,8 @@
       display:grid;
       grid-template-columns:1.2fr .8fr;
       gap:2rem;
-      padding:2.4rem 2.4rem 2.4rem;
-      margin-top:-120px;
+      padding:2.4rem;
+      margin-top:-100px;
       background:var(--paper);
       border-radius:26px;
       box-shadow:var(--shadow);
@@ -192,7 +181,7 @@
     /* offerings */
     .offerings{
       margin-top:2rem;
-      padding:2.2rem 2.2rem 2.4rem;
+      padding:2.2rem;
       border-radius:26px;
       background:var(--paper);
       box-shadow:var(--shadow);
@@ -208,35 +197,27 @@
       overflow:hidden;
       box-shadow:0 18px 44px rgba(0,0,0,.14);
     }
-    .offerings-img img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
+    .offerings-img img{ width:100%; height:100%; object-fit:cover; display:block; }
 
     /* journey */
     .journey{
       background:var(--paper);
       border-radius:26px;
       box-shadow:var(--shadow);
-      padding:2.2rem 2.2rem 2.4rem;
+      padding:2.2rem;
       backdrop-filter:blur(3px);
     }
-    .journey p{ line-height:1.7; margin-bottom:1rem; }
+    .journey p{ line-height:1.7; }
 
     /* links */
     .benefits-wrap{
       background:var(--paper);
       border-radius:26px;
       box-shadow:var(--shadow);
-      padding:2.2rem 2.2rem 2.4rem;
+      padding:2.2rem;
       backdrop-filter:blur(3px);
     }
-    .benefit-cards{
-      display:flex;
-      gap:1rem;
-    }
+    .benefit-cards{ display:flex; gap:1rem; }
     .benefit-card{
       background:rgba(255,255,255,.9);
       border-radius:18px;
@@ -260,54 +241,78 @@
       object-fit:cover;
     }
 
-    /* COMMENTS CAROUSEL */
-    #comments .panel{
+    /* comments slider */
+    .comments-panel{
       background:var(--paper);
       border-radius:26px;
       box-shadow:var(--shadow);
-      padding:2.1rem;
+      padding:2.1rem 2.1rem 2.6rem;
       backdrop-filter:blur(4px);
       position:relative;
       overflow:hidden;
     }
     .comments-track{
       display:flex;
-      transition:transform .4s ease;
+      transition:transform .35s ease;
     }
     .comment-card{
       min-width:100%;
-      padding-right:1rem;
-    }
-    .comment-text{
-      font-size:1rem;
-      line-height:1.7;
-      margin-bottom:.7rem;
+      background:rgba(255,255,255,.75);
+      border-radius:18px;
+      padding:1.6rem 1.5rem 1.2rem;
+      line-height:1.6;
     }
     .comment-author{
-      font-weight:600;
+      margin-top:1rem;
+      font-weight:700;
       font-family:"Cinzel",serif;
     }
     .comment-nav{
       position:absolute;
       top:50%;
-      left:1rem;
-      right:1rem;
-      display:flex;
-      justify-content:space-between;
       transform:translateY(-50%);
-      pointer-events:none;
-    }
-    .comment-btn{
-      width:34px;height:34px;
-      border-radius:50%;
+      width:36px;height:36px;
+      border-radius:999px;
       border:none;
-      background:rgba(0,0,0,.18);
+      background:rgba(0,0,0,.25);
       color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
       cursor:pointer;
-      pointer-events:auto;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .comment-prev{ left:1.2rem; }
+    .comment-next{ right:1.2rem; }
+
+    /* form abaixo dos comentários */
+    .feedback-form{
+      background:var(--paper);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      padding:2rem;
+      backdrop-filter:blur(4px);
+    }
+    .feedback-form label{ display:block; margin-bottom:.35rem; font-weight:600; }
+    .feedback-form input,
+    .feedback-form textarea{
+      width:100%;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:999px;
+      padding:.6rem .9rem;
+      font-family:inherit;
+      margin-bottom:1rem;
+    }
+    .feedback-form textarea{
+      border-radius:16px;
+      min-height:130px;
+      resize:vertical;
+    }
+    .feedback-form button{
+      border:0;
+      background:var(--gold);
+      color:#fff;
+      padding:.6rem 1.2rem;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
     }
 
     /* contact */
@@ -329,27 +334,21 @@
     footer .icons{ display:flex; justify-content:center; gap:1rem; margin-top:.9rem; }
     footer a{ color:#fff; }
 
+    /* responsivo */
     @media(max-width:960px){
-      .about{ grid-template-columns:1fr; margin-top:-70px; }
+      .about{ grid-template-columns:1fr; margin-top:-50px; }
       .offerings{ grid-template-columns:1fr; }
       .benefit-cards{ flex-wrap:wrap; }
       .benefit-card{ width:31%; min-width:150px; }
+      .nav-inner{gap:1rem;}
     }
     @media(max-width:720px){
-      .nav-inner{
-        justify-content:space-between;
-      }
-      .brand-block{
-        width:100%;
-        align-items:center; /* centraliza nome no mobile */
-      }
-      .about{ padding:1.6rem 1.2rem 1.8rem; }
-      .offerings{ padding:1.6rem 1.2rem 1.8rem; }
-      .journey{ padding:1.6rem 1.2rem 1.8rem; }
-      .benefits-wrap{ padding:1.6rem 1.2rem 1.8rem; }
+      .about,.offerings,.journey,.benefits-wrap,.comments-panel,.feedback-form{ padding:1.6rem 1.2rem 1.8rem; }
       .benefit-card{ width:100%; }
       .sheet{ width:100%; }
-      .comment-nav{ left:.5rem; right:.5rem; }
+      .comment-prev{ left:.4rem; }
+      .comment-next{ right:.4rem; }
+      .hero-gap{height:68vh;}
     }
   </style>
 </head>
@@ -361,8 +360,8 @@
 <nav>
   <div class="nav-inner">
     <div class="brand-block">
-      <div class="brand">Michéle Bavaresco</div>
-      <div class="brand-sub">yoga facilitator & holistic</div>
+      <a href="#top" class="brand">MICHÉLE BAVARESCO</a>
+      <div class="brand-sub">YOGA FACILITATOR & HOLISTIC GUIDE</div>
     </div>
     <button class="burger" id="openSheet" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
   </div>
@@ -371,31 +370,27 @@
 <!-- MENU LATERAL -->
 <aside class="sheet" id="sheet" aria-hidden="true">
   <button class="close" id="closeSheet" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-  <a href="#about" data-i18n="nav.about" onclick="closeSheet()">about me</a>
-  <a href="#offerings" data-i18n="nav.offerings" onclick="closeSheet()">offerings</a>
-  <a href="#journey" data-i18n="nav.journey" onclick="closeSheet()">the journey</a>
-  <a href="#benefits" data-i18n="nav.benefits" onclick="closeSheet()">links</a>
-  <a href="#comments" data-i18n="nav.comments" onclick="closeSheet()">comments</a>
-  <a href="#contact" data-i18n="nav.contact" onclick="closeSheet()">contact</a>
-
-  <div class="lang-switch">
-    <button id="btn-en" class="pill active">EN</button>
-    <button id="btn-pt" class="pill">PT</button>
-  </div>
+  <a href="#about" onclick="closeSheet()">about me</a>
+  <a href="#offerings" onclick="closeSheet()">offerings</a>
+  <a href="#journey" onclick="closeSheet()">the journey</a>
+  <a href="#benefits" onclick="closeSheet()">links</a>
+  <a href="#comments" onclick="closeSheet()">comments</a>
+  <a href="#contact" onclick="closeSheet()">contact</a>
 </aside>
 
-<main>
+<main id="top">
+  <!-- espaçamento hero -->
   <div class="hero-gap"></div>
 
   <!-- ABOUT -->
   <section id="about">
     <div class="about">
       <div>
-        <h2 class="section-title" data-i18n="about.title">the path so far</h2>
-        <p data-i18n="about.p1">When I sit on my mat, I feel in service to something greater than myself. In those moments, I am a drop in the vast ocean – unique, yet inseparable from the whole.</p>
-        <p data-i18n="about.p2">To me, yoga is not a trend or a workout. It is therapy, philosophy, and a way of life. Yoga is the mind in motion – as sacred as a church to a priest, as vital as the ocean to a surfer. It is the science of the mind, the key to understanding contradictions, dualities, and the codes of life itself.</p>
-        <p data-i18n="about.p3">Yoga healed me, and it continues to teach me who I am. It is medicine, a process of growth, an endless invitation to awaken vitality and purpose. These ancient teachings are not bound by time – they invite us to rethink, to reestablish our essence, and to return to the truth of who we are.</p>
-        <p data-i18n="about.p4">Yoga has completely changed my life. And I know it can change the lives of those who are ready to open their hearts to it.</p>
+        <h2 class="section-title">the path so far</h2>
+        <p>When I sit on my mat, I feel in service to something greater than myself. In those moments, I am a drop in the vast ocean – unique, yet inseparable from the whole.</p>
+        <p>To me, yoga is not a trend or a workout. It is therapy, philosophy, and a way of life. Yoga is the mind in motion – as sacred as a church to a priest, as vital as the ocean to a surfer. It is the science of the mind, the key to understanding contradictions, dualities, and the codes of life itself.</p>
+        <p>Yoga healed me, and it continues to teach me who I am. It is medicine, a process of growth, an endless invitation to awaken vitality and purpose. These ancient teachings are not bound by time – they invite us to rethink, to reestablish our essence, and to return to the truth of who we are.</p>
+        <p>Yoga has completely changed my life. And I know it can change the lives of those who are ready to open their hearts to it.</p>
       </div>
       <div class="about-img">
         <img src="sobre-michele.jpg" alt="About Michéle Bavaresco">
@@ -407,12 +402,14 @@
   <section id="offerings">
     <div class="offerings">
       <div>
-        <h3 class="section-title" data-i18n="offerings.h">movement as meditation</h3>
-        <p data-i18n="offerings.intro">
+        <h3 class="section-title">movement as meditation</h3>
+        <p>
           A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.
         </p>
-        <p data-i18n="offerings.full">
-          1×1: personalized sessions for your body and rhythm. Group sessions: gentle community practice, all levels welcome. Retreats: immersive time to slow down and renew. <strong>Yoga Nidra</strong> is conscious rest — where body and mind soften and the being awakens to its natural clarity.
+        <p>
+          1×1: personalized sessions for your body and rhythm. Group sessions: gentle community practice, all levels welcome.
+          Retreats: immersive time to slow down and renew. <strong>Yoga Nidra</strong> is conscious rest — where body and mind
+          soften and the being awakens to its natural clarity.
         </p>
       </div>
       <div class="offerings-img">
@@ -424,12 +421,12 @@
   <!-- JOURNEY -->
   <section id="journey">
     <div class="journey">
-      <h3 class="section-title" data-i18n="journey.title">the journey</h3>
-      <p data-i18n="journey.p1">
-        I offer spaces where movement becomes meditation — an invitation to ground, release, and rise. Rooted in the lineage of Hatha Yoga, my teachings weave together traditional wisdom and embodied presence, guiding each practitioner toward a deeper connection with themselves.
+      <h3 class="section-title">the journey</h3>
+      <p>
+        I offer spaces where movement becomes meditation – an invitation to ground, release, and rise. Rooted in the lineage of Hatha Yoga, my teachings weave together traditional wisdom and embodied presence, guiding each practitioner toward a deeper connection with themselves.
       </p>
-      <p data-i18n="journey.p2">
-        With over 800 hours of certified training (RYT-800), my path integrates a blend of practices and sādhanas, including Cosmic Yoga, Vinyasa, Ashtanga, Pranayama, and Vipassana Meditation as taught by S. N. Goenka. Each class is designed as a journey — honouring the body as a temple, the breath as a bridge, and awareness as the source of transformation.
+      <p>
+        With over 800 hours of certified training (RYT-800), my path integrates a blend of practices and sādhanas, including Cosmic Yoga, Vinyasa, Ashtanga, Pranayama, and Vipassana Meditation as taught by S. N. Goenka. Each class is designed as a journey – honouring the body as a temple, the breath as a bridge, and awareness as the source of transformation.
       </p>
     </div>
   </section>
@@ -439,15 +436,15 @@
     <div class="benefits-wrap">
       <div class="benefit-cards">
         <div class="benefit-card">
-          <a href="https://www.youtube.com/@SEU_CANAL" target="_blank" rel="noopener" data-i18n="cards.youtube">Try a class on YouTube</a>
+          <a href="https://www.youtube.com/@SEU_CANAL" target="_blank" rel="noopener">Try a class on YouTube</a>
           <img src="galeria-2.jpg" alt="YouTube preview">
         </div>
         <div class="benefit-card">
-          <a href="https://wa.me/351924418425" target="_blank" rel="noopener" data-i18n="cards.whatsapp">Book via WhatsApp</a>
+          <a href="https://wa.me/351924418425" target="_blank" rel="noopener">Book via WhatsApp</a>
           <img src="galeria-3.jpg" alt="WhatsApp preview">
         </div>
         <div class="benefit-card">
-          <a href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener" data-i18n="cards.instagram">Follow on Instagram</a>
+          <a href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener">Follow on Instagram</a>
           <img src="galeria-4.jpg" alt="Instagram preview">
         </div>
       </div>
@@ -456,40 +453,57 @@
 
   <!-- COMMENTS (carrossel) -->
   <section id="comments">
-    <div class="panel">
+    <div class="comments-panel">
       <div class="comments-track" id="commentsTrack">
         <div class="comment-card">
-          <p class="comment-text">“Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”</p>
-          <p class="comment-author">— Miranda</p>
+          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
+          <div class="comment-author">— Miranda</div>
         </div>
         <div class="comment-card">
-          <p class="comment-text">“Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”</p>
-          <p class="comment-author">— Miranda</p>
+          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
+          <div class="comment-author">— Miranda</div>
         </div>
         <div class="comment-card">
-          <p class="comment-text">“Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”</p>
-          <p class="comment-author">— Miranda</p>
+          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
+          <div class="comment-author">— Miranda</div>
         </div>
         <div class="comment-card">
-          <p class="comment-text">“Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”</p>
-          <p class="comment-author">— Miranda</p>
+          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
+          <div class="comment-author">— Miranda</div>
         </div>
         <div class="comment-card">
-          <p class="comment-text">“Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”</p>
-          <p class="comment-author">— Miranda</p>
+          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
+          <div class="comment-author">— Miranda</div>
         </div>
       </div>
-      <div class="comment-nav">
-        <button class="comment-btn" id="prevComment" aria-label="Previous comment"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="comment-btn" id="nextComment" aria-label="Next comment"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
+      <button class="comment-nav comment-prev" id="prevComment" aria-label="Previous comment">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="comment-nav comment-next" id="nextComment" aria-label="Next comment">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- FORM PARA ENVIAR COMENTÁRIO -->
+  <section>
+    <div class="feedback-form">
+      <form action="mailto:michellebavaresco@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" placeholder="Your name">
+
+        <label for="msg">Your message</label>
+        <textarea id="msg" name="message" placeholder="Write your feedback..."></textarea>
+
+        <button type="submit">Send</button>
+      </form>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="panel" style="text-align:center">
-      <p style="max-width:640px;margin:0 auto 1rem" data-i18n="contact.p">
+    <div class="panel" style="text-align:center;background:var(--paper);border-radius:26px;box-shadow:var(--shadow);backdrop-filter:blur(4px);padding:2.1rem;">
+      <p style="max-width:640px;margin:0 auto 1rem">
         If this work resonates, write to me and we’ll find the format that best suits your moment.
       </p>
       <div style="display:flex;justify-content:center;gap:1rem;">
@@ -527,81 +541,22 @@
     sheet.setAttribute('aria-hidden','true');
   }
 
-  // i18n
-  const i18n = {
-    en: {
-      "nav.about":"about me","nav.offerings":"offerings","nav.journey":"the journey","nav.benefits":"links","nav.comments":"comments","nav.contact":"contact",
-      "about.title":"the path so far",
-      "about.p1":"When I sit on my mat, I feel in service to something greater than myself. In those moments, I am a drop in the vast ocean – unique, yet inseparable from the whole.",
-      "about.p2":"To me, yoga is not a trend or a workout. It is therapy, philosophy, and a way of life. Yoga is the mind in motion – as sacred as a church to a priest, as vital as the ocean to a surfer. It is the science of the mind, the key to understanding contradictions, dualities, and the codes of life itself.",
-      "about.p3":"Yoga healed me, and it continues to teach me who I am. It is medicine, a process of growth, an endless invitation to awaken vitality and purpose. These ancient teachings are not bound by time – they invite us to rethink, to reestablish our essence, and to return to the truth of who we are.",
-      "about.p4":"Yoga has completely changed my life. And I know it can change the lives of those who are ready to open their hearts to it.",
-      "offerings.h":"movement as meditation",
-      "offerings.intro":"A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.",
-      "offerings.full":"1×1: personalized sessions for your body and rhythm. Group sessions: gentle community practice, all levels welcome. Retreats: immersive time to slow down and renew. <strong>Yoga Nidra</strong> is conscious rest — where body and mind soften and the being awakens to its natural clarity.",
-      "journey.title":"the journey",
-      "journey.p1":"I offer spaces where movement becomes meditation — an invitation to ground, release, and rise. Rooted in the lineage of Hatha Yoga, my teachings weave together traditional wisdom and embodied presence, guiding each practitioner toward a deeper connection with themselves.",
-      "journey.p2":"With over 800 hours of certified training (RYT-800), my path integrates a blend of practices and sādhanas, including Cosmic Yoga, Vinyasa, Ashtanga, Pranayama, and Vipassana Meditation as taught by S. N. Goenka. Each class is designed as a journey — honouring the body as a temple, the breath as a bridge, and awareness as the source of transformation.",
-      "cards.youtube":"Try a class on YouTube",
-      "cards.whatsapp":"Book via WhatsApp",
-      "cards.instagram":"Follow on Instagram",
-      "contact.p":"If this work resonates, write to me and we’ll find the format that best suits your moment."
-    },
-    pt: {
-      "nav.about":"sobre mim","nav.offerings":"ofertas","nav.journey":"a jornada","nav.benefits":"links","nav.comments":"comentários","nav.contact":"contato",
-      "about.title":"o caminho até aqui",
-      "about.p1":"Quando me sento no tapete, sinto que estou a serviço de algo maior do que eu. Nesses momentos, sou uma gota no oceano — única e, ao mesmo tempo, inseparável do todo.",
-      "about.p2":"Para mim, o yoga não é uma moda nem um treino. É terapia, filosofia e forma de viver. O yoga é a mente em movimento — tão sagrado quanto uma igreja para o padre, tão vital quanto o mar para o surfista. É ciência da mente, chave para compreender contradições, dualidades e os códigos da própria vida.",
-      "about.p3":"O yoga me curou e segue me ensinando quem sou. É medicina, processo de crescimento, convite contínuo para despertar vitalidade e propósito. Esses ensinamentos antigos não estão presos ao tempo — eles nos convidam a repensar, restabelecer a essência e voltar à verdade de quem somos.",
-      "about.p4":"O yoga mudou completamente a minha vida. E sei que pode mudar a vida de quem estiver pronto para se abrir a ele.",
-      "offerings.h":"movimento como meditação",
-      "offerings.intro":"Um entrelaço suave de <strong>Hatha</strong>, <strong>Meditação</strong>, <strong>Kriyas</strong> e <strong>Yoga Nidra</strong>, adaptado ao momento.",
-      "offerings.full":"1×1: sessões personalizadas para o seu corpo e ritmo. Sessões em grupo: prática comunitária gentil, todos os níveis. Retiros: tempo imersivo para desacelerar e renovar. <strong>Yoga Nidra</strong> é descanso consciente — onde corpo e mente se suavizam e o ser desperta para sua clareza natural.",
-      "journey.title":"a jornada",
-      "journey.p1":"Ofereço espaços onde o movimento se torna meditação — um convite para enraizar, liberar e elevar. Enraizadas na linhagem do Hatha Yoga, as minhas práticas entrelaçam sabedoria tradicional e presença encarnada, guiando cada pessoa para uma conexão mais profunda consigo mesma.",
-      "journey.p2":"Com mais de 800 horas de formação certificada (RYT-800), meu caminho integra práticas e sādhana como Cosmic Yoga, Vinyasa, Ashtanga, Pranayama e Meditação Vipassana ensinada por S. N. Goenka. Cada aula é pensada como uma jornada — honrando o corpo como templo, a respiração como ponte e a consciência como fonte de transformação.",
-      "cards.youtube":"Experimente uma aula no YouTube",
-      "cards.whatsapp":"Agende pelo WhatsApp",
-      "cards.instagram":"Acompanhe no Instagram",
-      "contact.p":"Se este trabalho ressoar, escreva-me e encontraremos o formato que melhor acolhe o seu momento."
-    }
-  };
-
-  function applyI18n(lang){
-    const dict = i18n[lang] || i18n.en;
-    document.documentElement.setAttribute('lang', lang);
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
-      if(!dict[key]) return;
-      el.innerHTML = dict[key];
-    });
-
-    document.getElementById('btn-en').classList.toggle('active', lang==='en');
-    document.getElementById('btn-pt').classList.toggle('active', lang==='pt');
-  }
-
-  document.getElementById('btn-en').addEventListener('click',()=>applyI18n('en'));
-  document.getElementById('btn-pt').addEventListener('click',()=>applyI18n('pt'));
-  applyI18n('en');
-
   // carrossel de comentários
   const track = document.getElementById('commentsTrack');
-  const prevBtn = document.getElementById('prevComment');
-  const nextBtn = document.getElementById('nextComment');
-  let idx = 0;
-  const total = track.children.length;
-
+  const cards = track.children;
+  const total = cards.length;
+  let index = 0;
   function updateComments(){
-    track.style.transform = `translateX(-${idx * 100}%)`;
+    track.style.transform = `translateX(-${index * 100}%)`;
   }
-  prevBtn.addEventListener('click', ()=>{
-    idx = (idx - 1 + total) % total;
+  document.getElementById('nextComment').onclick = () => {
+    index = (index + 1) % total;
     updateComments();
-  });
-  nextBtn.addEventListener('click', ()=>{
-    idx = (idx + 1) % total;
+  };
+  document.getElementById('prevComment').onclick = () => {
+    index = (index - 1 + total) % total;
     updateComments();
-  });
+  };
 </script>
 </body>
 </html>

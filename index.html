@@ -504,54 +504,86 @@
   <!-- espaçamento hero -->
   <div class="hero-gap"></div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about">
-      <div>
-        <h2 class="section-title">the path so far</h2>
-        <p>When I sit on my mat, I feel in service to something greater than myself. In those moments, I am a drop in the vast ocean – unique, yet inseparable from the whole.</p>
-        <p>To me, yoga is not a trend or a workout. It is therapy, philosophy, and a way of life. Yoga is the mind in motion – as sacred as a church to a priest, as vital as the ocean to a surfer. It is the science of the mind, the key to understanding contradictions, dualities, and the codes of life itself.</p>
-        <p>Yoga healed me, and it continues to teach me who I am. It is medicine, a process of growth, an endless invitation to awaken vitality and purpose. These ancient teachings are not bound by time – they invite us to rethink, to reestablish our essence, and to return to the truth of who we are.</p>
-        <p>Yoga has completely changed my life. And I know it can change the lives of those who are ready to open their hearts to it.</p>
-      </div>
-      <div class="about-img">
-        <img src="sobre-michele.jpg" alt="About Michéle Bavaresco">
-      </div>
-    </div>
-  </section>
+  <!-- ABOUT / SHORT INTRO -->
+<section id="about">
+  <div class="about">
+    <div>
+      <h2 class="section-title">about me</h2>
 
-  <!-- OFFERINGS -->
-  <section id="offerings">
-    <div class="offerings">
-      <div>
-        <h3 class="section-title">movement as meditation</h3>
-        <p>
-          A gentle weave of <strong>Hatha</strong>, <strong>Meditation</strong>, <strong>Kriyas</strong> and <strong>Yoga Nidra</strong>, adapted to the moment.
-        </p>
-        <p>
-          1×1: personalized sessions for your body and rhythm. Group sessions: gentle community practice, all levels welcome.
-          Retreats: immersive time to slow down and renew. <strong>Yoga Nidra</strong> is conscious rest — where body and mind
-          soften and the being awakens to its natural clarity.
-        </p>
-      </div>
-      <div class="offerings-img">
-        <img src="aulas.jpg" alt="Yoga class">
-      </div>
-    </div>
-  </section>
+      <p>
+        I’m Michele, a yoga and mindfulness facilitator based in Portugal. I create spaces where you can slow down, reconnect, and feel at home in your body - whether through movement, stillness, or shared experiences. My approach blends strength and softness, presence and depth - supporting you not just in your practice, but in how you move through life.
+      </p>
 
-  <!-- JOURNEY -->
-  <section id="journey">
-    <div class="journey">
-      <h3 class="section-title">the journey</h3>
-      <p>
-        I offer spaces where movement becomes meditation – an invitation to ground, release, and rise. Rooted in the lineage of Hatha Yoga, my teachings weave together traditional wisdom and embodied presence, guiding each practitioner toward a deeper connection with themselves.
-      </p>
-      <p>
-        With over 800 hours of certified training (RYT-800), my path integrates a blend of practices and sādhanas, including Cosmic Yoga, Vinyasa, Ashtanga, Pranayama, and Vipassana Meditation as taught by S. N. Goenka. Each class is designed as a journey – honouring the body as a temple, the breath as a bridge, and awareness as the source of transformation.
-      </p>
+      <button class="read-more-btn" type="button" onclick="openInfoModal('path')">
+        The path so far
+      </button>
     </div>
-  </section>
+
+    <div class="about-img">
+      <img src="sobre-michele.jpg" alt="About Michéle Bavaresco">
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section id="offerings">
+  <div class="offerings">
+    <div>
+      <h3 class="section-title">how would you like to practice or collaborate</h3>
+
+      <button class="read-more-btn" type="button" onclick="openInfoModal('lineage')">
+        My lineage
+      </button>
+
+      <div class="offers-compact">
+        <button class="offer-mini" type="button" onclick="openInfoModal('group')">
+          <h4>Group Classes</h4>
+          <p>Move, breathe, and reconnect</p>
+        </button>
+
+        <button class="offer-mini" type="button" onclick="openInfoModal('private')">
+          <h4>1:1 Sessions</h4>
+          <p>Personalised support for your journey</p>
+        </button>
+
+        <button class="offer-mini" type="button" onclick="openInfoModal('nidra')">
+          <h4>1x1 Yoga Nidra therapy</h4>
+          <p>A deeply restorative and therapeutic practice</p>
+        </button>
+
+        <button class="offer-mini" type="button" onclick="openInfoModal('retreats')">
+          <h4>Workshops & Retreats</h4>
+          <p>Immersive experiences to go deeper</p>
+        </button>
+      </div>
+    </div>
+
+    <div class="offerings-img">
+      <img src="aulas.jpg" alt="Yoga class">
+    </div>
+  </div>
+</section>
+
+<!-- COLLABORATIONS / HOSTING -->
+<section id="collab">
+  <div class="journey">
+    <h3 class="section-title">host & space holder for retreats & events</h3>
+
+    <p>
+      If you’re creating a retreat, immersion, or meaningful gathering and need someone to hold the space with presence and care, I’m here to support you.
+    </p>
+    <p>
+      I collaborate with brands, facilitators, and creators to co-create experiences that feel intentional, grounded, and deeply human.
+    </p>
+    <p>
+      From wellness retreats to private events and conscious gatherings, I help shape an experience where people can truly slow down, connect, and feel.
+    </p>
+
+    <button class="read-more-btn" type="button" onclick="openInfoModal('collab')">
+      Read more about collaborations
+    </button>
+  </div>
+</section>
 
   <!-- LINKS -->
   <section id="benefits">
@@ -679,6 +711,97 @@
     index = (index - 1 + total) % total;
     updateComments();
   };
+</script>
+  <div class="info-modal" id="infoModal">
+  <div class="info-modal-box">
+    <button class="info-close" type="button" onclick="closeInfoModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <h3 id="infoModalTitle"></h3>
+    <div id="infoModalBody"></div>
+  </div>
+</div>
+
+<script>
+  const MODAL_TEXTS = {
+    path: {
+      title: "The path so far",
+      body: `
+        <p>When I sit on my mat, I feel in service to something greater than myself - a small part of something vast, yet intimately connected. I don’t see yoga as a trend or just a physical practice. To me, it is a way of life, a space where we learn to understand the mind, navigate our inner world and reconnect with what truly matters - the connection between our bodies and minds.</p>
+        <p>When yoga came into my path, I didn't know I would end up teaching. It naturally happened because I felt the urge to share all the teachings I learned along the way from great guides in India, and also my beloved teacher, Mary. Ten years ago, under the guidance of Mary, I travelled to India - the birthplace of yoga - where my understanding deepened, transforming my practice into a living experience.</p>
+        <p>For me, yoga is the science of the mind. It is a journey of awareness, healing, and presence. Yoga has taught me to return to myself again and again - with clarity, strength, and tenderness. Today, I share this journey to help others reconnect with their bodies, minds, and inner truths.</p>
+      `
+    },
+    lineage: {
+      title: "My lineage",
+      body: `
+        <p>I offer spaces where movement becomes meditation - an invitation to ground, release, and rise. Rooted in Hatha Yoga, my teachings weave together traditional wisdom and embodied presence, guiding each practitioner toward a deeper connection with themselves.</p>
+        <p>With over 800 hours of certified training (RYT-800), my path integrates Hatha, Cosmic Yoga, Yoga Nidra, Vinyasa, Ashtanga, Breathwork, Kundalini kriyas, Shatkarmas, and Vipassana meditation as taught by S. N. Goenka.</p>
+        <p>Each class is designed as a journey - honouring the body as a temple, the breath as a bridge, and awareness as the source of transformation.</p>
+      `
+    },
+    group: {
+      title: "Group Classes",
+      body: `
+        <p><strong>Move, breathe, and reconnect</strong></p>
+        <p>For you, if you want to build consistency, feel your body stronger, and practice in a shared energy.</p>
+        <p><strong>You’ll feel:</strong><br>Grounded, energised, and more present</p>
+        <p><a href="https://wa.me/351924418425" target="_blank">Book a class</a></p>
+      `
+    },
+    private: {
+      title: "1:1 Sessions",
+      body: `
+        <p><strong>Personalised support for your journey</strong></p>
+        <p>For you, if you’re seeking deeper guidance, emotional support, or a practice tailored to your body and moment in life.</p>
+        <p><strong>You’ll feel:</strong><br>Seen, supported, and aligned</p>
+        <p><a href="https://wa.me/351924418425" target="_blank">Book a private session</a></p>
+      `
+    },
+    nidra: {
+      title: "1x1 Yoga Nidra therapy",
+      body: `
+        <p>A deeply restorative and therapeutic practice to support your mental, emotional and physical well-being.</p>
+        <p><strong>For you if</strong><br>Feeling drained, stressed, tensioned<br>Have problems sleeping<br>Looking for a deeper state of balance and inner calm</p>
+        <p><strong>You will leave feeling</strong><br>Calm, grounded, reconnected with yourself.</p>
+        <p><a href="https://wa.me/351924418425" target="_blank">Book a private session</a></p>
+      `
+    },
+    retreats: {
+      title: "Workshops & Retreats",
+      body: `
+        <p><strong>Immersive experiences to go deeper</strong></p>
+        <p>For you, if you want to step away from routine and reconnect with yourself in a meaningful way.</p>
+        <p><strong>You’ll feel:</strong><br>Renewed, open, and deeply connected</p>
+        <p><a href="https://wa.me/351924418425" target="_blank">See upcoming experiences</a></p>
+      `
+    },
+    collab: {
+      title: "Collaborations / Hosting",
+      body: `
+        <p><strong>I can support with:</strong></p>
+        <p>Opening & closing the space<br>Guided meditation & breathwork<br>Group connection and flow<br>Co-facilitation</p>
+        <p><strong>The result:</strong><br>An experience that feels cohesive, safe, and alive — where people don’t just attend, but truly arrive.</p>
+        <p><a href="mailto:michellebavaresco@gmail.com">Let’s collaborate</a></p>
+      `
+    }
+  };
+
+  function openInfoModal(key){
+    const item = MODAL_TEXTS[key];
+    if(!item) return;
+    document.getElementById("infoModalTitle").innerHTML = item.title;
+    document.getElementById("infoModalBody").innerHTML = item.body;
+    document.getElementById("infoModal").classList.add("open");
+  }
+
+  function closeInfoModal(){
+    document.getElementById("infoModal").classList.remove("open");
+  }
+
+  document.getElementById("infoModal").addEventListener("click", function(e){
+    if(e.target === this) closeInfoModal();
+  });
 </script>
 </body>
 </html>

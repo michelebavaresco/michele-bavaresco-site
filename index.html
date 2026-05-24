@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-current-lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Michéle Bavaresco — Embodied Awakening</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root{
-      --bg: #ECECEC;
-      --paper: rgba(247,247,247,.6);
-      --ink: #2A2A2A;
-      --accent: #6B6B6B;
-      --shadow: 0 18px 48px rgba(0,0,0,.10);
-      --gold: #C89B3C;
+      --bg:#ECECEC;
+      --paper:rgba(247,247,247,.72);
+      --ink:#2A2A2A;
+      --accent:#6B6B6B;
+      --shadow:0 18px 48px rgba(0,0,0,.10);
+      --gold:#C89B3C;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:80px;}
-    body{font-family:"Manrope",system-ui,sans-serif;background:var(--bg);color:var(--ink);}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
+    body{font-family:"Manrope",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
 
-    /* fundo fixo */
+    [data-lang]{display:none}
+    html[data-current-lang="en"] [data-lang="en"]{display:initial}
+    html[data-current-lang="pt"] [data-lang="pt"]{display:initial}
+
     .bg-fixed{
       position:fixed;
       inset:0;
@@ -33,6 +34,7 @@
       opacity:1;
       z-index:-2;
     }
+
     .bg-overlay{
       position:fixed;
       inset:0;
@@ -40,14 +42,15 @@
       z-index:-1;
     }
 
-    /* topo */
     nav{
-      position:fixed;top:0;left:0;right:0;
+      position:fixed;
+      top:0;left:0;right:0;
       background:rgba(247,247,247,.88);
       backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(0,0,0,.03);
       z-index:999;
     }
+
     .nav-inner{
       max-width:1180px;
       margin:auto;
@@ -56,12 +59,14 @@
       align-items:center;
       padding:.75rem 1.1rem;
     }
+
     .brand-block{
       display:flex;
       flex-direction:column;
-      align-items:center;       /* centraliza nome e subtítulo */
+      align-items:center;
       text-align:center;
     }
+
     .brand{
       font-family:"Cinzel",serif;
       letter-spacing:.14em;
@@ -72,6 +77,7 @@
       text-decoration:none;
       cursor:pointer;
     }
+
     .brand-sub{
       font-family:"Cinzel",serif;
       font-size:.58rem;
@@ -81,34 +87,44 @@
       margin-top:.15rem;
       white-space:nowrap;
     }
+
     .burger{
-      background:none;border:0;
+      background:none;
+      border:0;
       font-size:1.4rem;
       cursor:pointer;
       color:var(--ink);
     }
 
-    /* menu lateral */
     .sheet{
-      position:fixed;top:0;right:0;bottom:0;
-      width:280px;max-width:100%;
+      position:fixed;
+      top:0;right:0;bottom:0;
+      width:280px;
+      max-width:100%;
       background:rgba(247,247,247,.96);
       backdrop-filter:blur(12px);
       transform:translateX(110%);
       transition:.3s ease;
       z-index:1000;
       padding:1.2rem .5rem 1.3rem;
-      display:flex;flex-direction:column;align-items:center;gap:.4rem;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.4rem;
     }
-    .sheet.open{ transform:translateX(0); }
+
+    .sheet.open{transform:translateX(0)}
+
     .sheet .close{
-      background:none;border:0;
+      background:none;
+      border:0;
       align-self:flex-end;
       font-size:1.3rem;
       cursor:pointer;
       color:var(--ink);
       margin-bottom:.6rem;
     }
+
     .sheet a{
       width:100%;
       text-align:center;
@@ -121,9 +137,15 @@
       letter-spacing:.04em;
       font-size:.9rem;
     }
-    .sheet a:hover{ background:rgba(200,155,60,.18); }
 
-    .lang-switch{ margin-top:auto; display:flex; gap:.35rem; }
+    .sheet a:hover{background:rgba(200,155,60,.18)}
+
+    .lang-switch{
+      margin-top:auto;
+      display:flex;
+      gap:.35rem;
+    }
+
     .pill{
       border:0;
       background:rgba(42,42,42,.08);
@@ -132,33 +154,34 @@
       font-weight:700;
       cursor:pointer;
     }
-    .pill.active{ background:var(--gold); color:#fff; }
 
-    /* estrutura geral */
-    main{ margin-top:80px; }
+    .pill.active{
+      background:var(--gold);
+      color:#fff;
+    }
+
+    main{margin-top:80px}
+
     section{
       max-width:1180px;
       margin:0 auto 3rem;
       padding:0 1.1rem;
     }
 
-    /* mais espaço pra foto */
     .hero-gap{
       height:75vh;
       min-height:520px;
     }
 
-    /* títulos */
     .section-title{
       font-family:"Cinzel",serif;
-      font-size:1.5rem;         /* mesmo ar do nome */
+      font-size:1.5rem;
       letter-spacing:.04em;
       margin-bottom:1.3rem;
       text-transform:lowercase;
       font-weight:400;
     }
 
-    /* about */
     .about{
       display:grid;
       grid-template-columns:1.2fr .8fr;
@@ -170,54 +193,217 @@
       box-shadow:var(--shadow);
       backdrop-filter:blur(4px);
     }
-    .about p{ margin-bottom:1rem; line-height:1.7; }
+
+    .about p{
+      margin-bottom:1rem;
+      line-height:1.7;
+    }
+
     .about-img{
       border-radius:20px;
       overflow:hidden;
       box-shadow:0 18px 44px rgba(0,0,0,.14);
+      max-height:360px;
     }
-    .about-img img{ width:100%; height:100%; object-fit:cover; }
 
-    /* offerings */
-    .offerings{
-      margin-top:2rem;
-      padding:2.2rem;
-      border-radius:26px;
-      background:var(--paper);
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns:1.05fr .85fr;
-      gap:2rem;
+    .about-img img{
+      width:100%;
+      height:100%;
+      min-height:320px;
+      object-fit:cover;
+      filter:grayscale(100%);
+      display:block;
+    }
+
+    .read-more-btn{
+      border:0;
+      background:transparent;
+      color:#2A2A2A;
+      font-weight:800;
+      font-family:"Cinzel",serif;
+      cursor:pointer;
+      padding:.4rem 0;
+      text-align:left;
+    }
+
+    .read-more-btn::after{
+      content:"i";
+      display:inline-flex;
       align-items:center;
+      justify-content:center;
+      width:20px;
+      height:20px;
+      margin-left:.45rem;
+      border-radius:50%;
+      background:rgba(42,42,42,.12);
+      color:#2A2A2A;
+      font-size:.72rem;
+      font-family:"Manrope",sans-serif;
+      font-weight:800;
+      vertical-align:middle;
+    }
+
+    .lineage-dark{
+      background:rgba(42,42,42,.88);
+      color:#fff;
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      padding:2.4rem;
       backdrop-filter:blur(4px);
     }
-    .offerings p{ margin-bottom:1rem; }
-    .offerings-img{
+
+    .lineage-kicker{
+      font-family:"Cinzel",serif;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.72rem;
+      margin-bottom:.9rem;
+      font-weight:700;
+    }
+
+    .lineage-dark .section-title{
+      color:#fff;
+      font-size:2.4rem;
+      text-transform:uppercase;
+      line-height:1.15;
+    }
+
+    .lineage-dark p{
+      color:rgba(255,255,255,.78);
+      line-height:1.7;
+    }
+
+    .lineage-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.4rem;
+    }
+
+    .lineage-item{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:1.1rem;
+    }
+
+    .lineage-item h4{
+      font-family:"Cinzel",serif;
+      color:var(--gold);
+      font-weight:400;
+      margin-bottom:.45rem;
+    }
+
+    .offerings{
+      padding:2.2rem;
+      border-radius:26px;
+      background:var(--paper);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(4px);
+    }
+
+    .offers-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.2rem;
+      margin-top:1.3rem;
+    }
+
+    .offer-card{
+      background:rgba(255,255,255,.88);
       border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.07);
       overflow:hidden;
-      box-shadow:0 18px 44px rgba(0,0,0,.14);
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      min-height:340px;
     }
-    .offerings-img img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-    /* journey */
-    .journey{
+    .offer-card a.img-link{
+      display:block;
+      height:100%;
+      overflow:hidden;
+      background:#fff;
+    }
+
+    .offer-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      filter:none;
+      display:block;
+      transform:scale(1.16);
+    }
+
+    .offer-card:nth-child(1) img{
+      transform:scale(1.30);
+      object-position:center center;
+    }
+
+    .offer-body{
+      padding:1.2rem;
+    }
+
+    .offer-body h4{
+      font-family:"Cinzel",serif;
+      font-size:1.08rem;
+      margin-bottom:.35rem;
+    }
+
+    .offer-sub{
+      font-weight:400;
+      color:rgba(0,0,0,.72);
+      margin-bottom:.9rem;
+      line-height:1.45;
+    }
+
+    .offer-body p{
+      line-height:1.6;
+      color:rgba(0,0,0,.72);
+      margin-bottom:.8rem;
+    }
+
+    .offer-body strong{
+      color:var(--ink);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      padding:.65rem 1.05rem;
+      border-radius:999px;
+      background:var(--gold);
+      color:#fff;
+      font-weight:700;
+      margin-top:.35rem;
+      border:0;
+    }
+
+    .journey,
+    .benefits-wrap,
+    .comments-panel,
+    .feedback-form{
       background:var(--paper);
       border-radius:26px;
       box-shadow:var(--shadow);
       padding:2.2rem;
-      backdrop-filter:blur(3px);
+      backdrop-filter:blur(4px);
     }
-    .journey p{ line-height:1.7; }
 
-    /* links */
-    .benefits-wrap{
-      background:var(--paper);
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      padding:2.2rem;
-      backdrop-filter:blur(3px);
+    .journey p{
+      line-height:1.7;
+      margin-bottom:1rem;
     }
-    .benefit-cards{ display:flex; gap:1rem; }
+
+    .benefit-cards{
+      display:flex;
+      gap:1rem;
+    }
+
     .benefit-card{
       background:rgba(255,255,255,.9);
       border-radius:18px;
@@ -226,35 +412,34 @@
       text-align:center;
       box-shadow:0 10px 30px rgba(0,0,0,.07);
     }
+
     .benefit-card a{
       display:block;
       font-weight:700;
       color:var(--ink);
       text-decoration:none;
       margin-bottom:.65rem;
-      font-family:"Manrope",sans-serif;
     }
+
     .benefit-card img{
       width:100%;
       border-radius:12px;
       aspect-ratio:4/3;
       object-fit:cover;
+      filter:none;
+      display:block;
     }
 
-    /* comments slider */
     .comments-panel{
-      background:var(--paper);
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      padding:2.1rem 2.1rem 2.6rem;
-      backdrop-filter:blur(4px);
       position:relative;
       overflow:hidden;
     }
+
     .comments-track{
       display:flex;
       transition:transform .35s ease;
     }
+
     .comment-card{
       min-width:100%;
       background:rgba(255,255,255,.75);
@@ -262,35 +447,38 @@
       padding:1.6rem 1.5rem 1.2rem;
       line-height:1.6;
     }
+
     .comment-author{
       margin-top:1rem;
       font-weight:700;
       font-family:"Cinzel",serif;
     }
+
     .comment-nav{
       position:absolute;
       top:50%;
       transform:translateY(-50%);
-      width:36px;height:36px;
+      width:36px;
+      height:36px;
       border-radius:999px;
       border:none;
       background:rgba(0,0,0,.25);
       color:#fff;
       cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
-    .comment-prev{ left:1.2rem; }
-    .comment-next{ right:1.2rem; }
 
-    /* form abaixo dos comentários */
-    .feedback-form{
-      background:var(--paper);
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      padding:2rem;
-      backdrop-filter:blur(4px);
+    .comment-prev{left:1.2rem}
+    .comment-next{right:1.2rem}
+
+    .feedback-form label{
+      display:block;
+      margin-bottom:.35rem;
+      font-weight:600;
     }
-    .feedback-form label{ display:block; margin-bottom:.35rem; font-weight:600; }
+
     .feedback-form input,
     .feedback-form textarea{
       width:100%;
@@ -300,11 +488,13 @@
       font-family:inherit;
       margin-bottom:1rem;
     }
+
     .feedback-form textarea{
       border-radius:16px;
       min-height:130px;
       resize:vertical;
     }
+
     .feedback-form button{
       border:0;
       background:var(--gold);
@@ -315,13 +505,62 @@
       font-weight:600;
     }
 
-    /* contact */
     #contact .panel{
       background:var(--paper);
       border-radius:26px;
       box-shadow:var(--shadow);
       padding:2.1rem;
       backdrop-filter:blur(4px);
+      text-align:center;
+    }
+
+    .info-modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.48);
+      z-index:5000;
+      padding:1rem;
+    }
+
+    .info-modal.open{display:flex}
+
+    .info-modal-box{
+      width:min(760px,94vw);
+      max-height:82vh;
+      overflow:auto;
+      background:rgba(247,247,247,.96);
+      border-radius:24px;
+      padding:2rem;
+      box-shadow:0 18px 48px rgba(0,0,0,.22);
+      color:#2A2A2A;
+    }
+
+    .info-modal-box h3{
+      font-family:"Cinzel",serif;
+      margin-bottom:1rem;
+    }
+
+    .info-modal-box p{
+      line-height:1.7;
+      margin-bottom:1rem;
+    }
+
+    .info-modal-box a{
+      color:var(--gold);
+      font-weight:800;
+    }
+
+    .info-close{
+      float:right;
+      border:0;
+      background:rgba(42,42,42,.08);
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      cursor:pointer;
     }
 
     footer{
@@ -331,169 +570,55 @@
       padding:2.4rem 1rem 2.8rem;
       margin-top:3rem;
     }
-    footer .icons{ display:flex; justify-content:center; gap:1rem; margin-top:.9rem; }
-    footer a{ color:#fff; }
 
-    /* responsivo */
+    footer .icons{
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      margin-top:.9rem;
+    }
+
+    footer a{color:#fff}
+
     @media(max-width:960px){
-      .about{ grid-template-columns:1fr; margin-top:-50px; }
-      .offerings{ grid-template-columns:1fr; }
-      .benefit-cards{ flex-wrap:wrap; }
-      .benefit-card{ width:31%; min-width:150px; }
-      .nav-inner{gap:1rem;}
-    }
-    @media(max-width:720px){
-      .about,.offerings,.journey,.benefits-wrap,.comments-panel,.feedback-form{ padding:1.6rem 1.2rem 1.8rem; }
-      .benefit-card{ width:100%; }
-      .sheet{ width:100%; }
-      .comment-prev{ left:.4rem; }
-      .comment-next{ right:.4rem; }
-      .hero-gap{height:68vh;}
-    }
-    /* CORREÇÃO VISUAL LANDING PAGE */
-#hero{
-  margin-top:3.5rem !important;
-  margin-bottom:4rem !important;
-}
-
-#hero > div{
-  background:rgba(247,247,247,.76) !important;
-}
-
-#hero *{
-  color:#2A2A2A !important;
-}
-
-#hero a:first-of-type{
-  background:var(--gold) !important;
-  color:#fff !important;
-}
-
-.about,
-.offerings,
-.journey{
-  background:rgba(247,247,247,.78) !important;
-}
-
-.about-img,
-.offerings-img{
-  max-height:360px;
-}
-
-.about-img img,
-.offerings-img img{
-  height:100%;
-  min-height:320px;
+      .about{grid-template-columns:1fr;margin-top:-50px}
+      .lineage-grid{grid-template-columns:1fr}
+      .offers-grid{grid-template-columns:1fr}
+      .offer-card{grid-template-columns:1fr}
+      .offer-card img{
+  height:260px;
+  transform:none;
   object-fit:cover;
+  object-position:center 72%;
 }
+      .benefit-cards{flex-wrap:wrap}
+      .benefit-card{width:31%;min-width:150px}
+    }
 
-.read-more-btn{
-  border:0;
-  background:transparent;
-  color:#2A2A2A;
-  font-weight:800;
-  font-family:"Cinzel",serif;
-  cursor:pointer;
-  padding:.4rem 0;
-  text-align:left;
-}
+    @media(max-width:720px){
+      .about,
+      .offerings,
+      .journey,
+      .benefits-wrap,
+      .comments-panel,
+      .feedback-form,
+      .lineage-dark{
+        padding:1.6rem 1.2rem 1.8rem;
+      }
 
-.offers-compact{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:1rem;
-  margin-top:1.3rem;
-}
-
-.offer-mini{
-  background:rgba(255,255,255,.86);
-  border:0;
-  border-radius:18px;
-  padding:1rem;
-  box-shadow:0 10px 30px rgba(0,0,0,.07);
-  text-align:left;
-  cursor:pointer;
-  color:#2A2A2A;
-}
-
-.offer-mini h4{
-  font-family:"Cinzel",serif;
-  font-size:1rem;
-  margin-bottom:.5rem;
-}
-
-.offer-mini p{
-  margin:0;
-  font-weight:700;
-}
-
-.info-modal{
-  position:fixed;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.48);
-  z-index:5000;
-  padding:1rem;
-}
-
-.info-modal.open{
-  display:flex;
-}
-
-.info-modal-box{
-  width:min(760px,94vw);
-  max-height:82vh;
-  overflow:auto;
-  background:rgba(247,247,247,.96);
-  border-radius:24px;
-  padding:2rem;
-  box-shadow:0 18px 48px rgba(0,0,0,.22);
-  color:#2A2A2A;
-}
-
-.info-modal-box h3{
-  font-family:"Cinzel",serif;
-  margin-bottom:1rem;
-}
-
-.info-modal-box p{
-  line-height:1.7;
-  margin-bottom:1rem;
-}
-
-.info-close{
-  float:right;
-  border:0;
-  background:rgba(42,42,42,.08);
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  cursor:pointer;
-}
-    /* ÍCONE AUTOMÁTICO NOS ITENS COM POPUP */
-.read-more-btn::after,
-.offer-mini h4::after{
-  content:"i";
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:20px;
-  height:20px;
-  margin-left:.45rem;
-  border-radius:50%;
-  background:rgba(42,42,42,.12);
-  color:#2A2A2A;
-  font-size:.72rem;
-  font-family:"Manrope",sans-serif;
-  font-weight:800;
-  vertical-align:middle;
-}
+      .benefit-card{width:100%}
+      .sheet{width:100%}
+      .comment-prev{left:.4rem}
+      .comment-next{right:.4rem}
+      .hero-gap{height:68vh}
+      .brand{font-size:1.1rem}
+      .brand-sub{font-size:.48rem;letter-spacing:.18em}
+      .lineage-dark .section-title{font-size:1.7rem}
+    }
   </style>
 </head>
-<body>
 
+<body>
 <div class="bg-fixed"></div>
 <div class="bg-overlay"></div>
 
@@ -507,234 +632,311 @@
   </div>
 </nav>
 
-<!-- MENU LATERAL -->
 <aside class="sheet" id="sheet" aria-hidden="true">
   <button class="close" id="closeSheet" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-  <a href="#about" onclick="closeSheet()">about me</a>
-  <a href="#offerings" onclick="closeSheet()">offerings</a>
-  <a href="#journey" onclick="closeSheet()">the journey</a>
+
+  <a href="#about" onclick="closeSheet()"><span data-lang="en">about me</span><span data-lang="pt">sobre mim</span></a>
+  <a href="#lineage" onclick="closeSheet()"><span data-lang="en">lineage</span><span data-lang="pt">linhagem</span></a>
+  <a href="#offerings" onclick="closeSheet()"><span data-lang="en">offerings</span><span data-lang="pt">ofertas</span></a>
+  <a href="#collab" onclick="closeSheet()"><span data-lang="en">collaborations</span><span data-lang="pt">colaborações</span></a>
   <a href="#benefits" onclick="closeSheet()">links</a>
-  <a href="#comments" onclick="closeSheet()">comments</a>
-  <a href="#contact" onclick="closeSheet()">contact</a>
+  <a href="#comments" onclick="closeSheet()"><span data-lang="en">comments</span><span data-lang="pt">comentários</span></a>
+  <a href="#contact" onclick="closeSheet()"><span data-lang="en">contact</span><span data-lang="pt">contato</span></a>
+
+  <div class="lang-switch">
+    <button class="pill active" id="langEN" type="button" onclick="setLang('en')">EN</button>
+    <button class="pill" id="langPT" type="button" onclick="setLang('pt')">PT</button>
+  </div>
 </aside>
 
 <main id="top">
-  <!-- espaçamento hero -->
   <div class="hero-gap"></div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about">
+      <div>
+        <h2 class="section-title"><span data-lang="en">about me</span><span data-lang="pt">sobre mim</span></h2>
 
-  <!-- ABOUT / SHORT INTRO -->
-<section id="about">
-  <div class="about">
-    <div>
-      <h2 class="section-title">about me</h2>
+        <p data-lang="en">
+          Hi, I am a yoga and mindfulness facilitator based in Portugal. I create spaces where you can slow down, reconnect, and feel at home in your body - whether through movement, stillness, or shared experiences. My approach blends strength and softness, presence and depth - supporting you not just in your practice, but in how you move through life.
+        </p>
 
-      <p>
-        I’m Michele, a yoga and mindfulness facilitator based in Portugal. I create spaces where you can slow down, reconnect, and feel at home in your body - whether through movement, stillness, or shared experiences. My approach blends strength and softness, presence and depth - supporting you not just in your practice, but in how you move through life.
-      </p>
+        <p data-lang="pt">
+          Sou facilitadora de yoga e mindfulness em Portugal. Crio espaços onde você pode desacelerar, se reconectar e sentir-se em casa no próprio corpo — através do movimento, da presença e de experiências compartilhadas.
+        </p>
 
-      <button class="read-more-btn" type="button" onclick="openInfoModal('path')">
-        The path so far
-      </button>
-    </div>
-
-    <div class="about-img">
-      <img src="sobre-michele.jpg" alt="About Michéle Bavaresco">
-    </div>
-  </div>
-</section>
-
-<!-- OFFERINGS -->
-<section id="offerings">
-  <div class="offerings">
-    <div>
-      <h3 class="section-title">how would you like to practice or collaborate</h3>
-
-      <button class="read-more-btn" type="button" onclick="openInfoModal('lineage')">
-        My lineage
-      </button>
-
-      <div class="offers-compact">
-        <button class="offer-mini" type="button" onclick="openInfoModal('group')">
-          <h4>Group Classes</h4>
-          <p>Move, breathe, and reconnect</p>
-        </button>
-
-        <button class="offer-mini" type="button" onclick="openInfoModal('private')">
-          <h4>1:1 Sessions</h4>
-          <p>Personalised support for your journey</p>
-        </button>
-
-        <button class="offer-mini" type="button" onclick="openInfoModal('nidra')">
-          <h4>1x1 Yoga Nidra therapy</h4>
-          <p>A deeply restorative and therapeutic practice</p>
-        </button>
-
-        <button class="offer-mini" type="button" onclick="openInfoModal('retreats')">
-          <h4>Workshops & Retreats</h4>
-          <p>Immersive experiences to go deeper</p>
+        <button class="read-more-btn" type="button" onclick="openInfoModal('path')">
+          <span data-lang="en">The path so far</span>
+          <span data-lang="pt">O caminho até aqui</span>
         </button>
       </div>
+
+      <div class="about-img">
+        <img src="sobre-michele.jpg" alt="About Michéle">
+      </div>
     </div>
+  </section>
 
-    <div class="offerings-img">
-      <img src="aulas.jpg" alt="Yoga class">
+  <!-- LINEAGE -->
+  <section id="lineage">
+    <div class="lineage-dark">
+      <div class="lineage-kicker"><span data-lang="en">The lineage</span><span data-lang="pt">A linhagem</span></div>
+
+      <h2 class="section-title">
+        <span data-lang="en">movement becomes meditation.</span>
+        <span data-lang="pt">o movimento se torna meditação.</span>
+      </h2>
+
+      <p data-lang="en">
+        Rooted in Hatha Yoga, my teachings weave together traditional wisdom and embodied presence.
+      </p>
+
+      <p data-lang="pt">
+        Enraizada no Hatha Yoga, minha prática une sabedoria tradicional e presença incorporada.
+      </p>
+
+      <div class="lineage-grid">
+        <div class="lineage-item">
+          <h4>Body</h4>
+          <p data-lang="en">Strength, stability and gentle awareness.</p>
+          <p data-lang="pt">Força, estabilidade e consciência gentil.</p>
+        </div>
+
+        <div class="lineage-item">
+          <h4>Breath</h4>
+          <p data-lang="en">A bridge between emotion and presence.</p>
+          <p data-lang="pt">Uma ponte entre emoção e presença.</p>
+        </div>
+
+        <div class="lineage-item">
+          <h4>Spirit</h4>
+          <p data-lang="en">A return to inner balance and truth.</p>
+          <p data-lang="pt">Um retorno ao equilíbrio interior e à verdade.</p>
+        </div>
+      </div>
+
+      <button class="read-more-btn" type="button" onclick="openInfoModal('lineage')" style="margin-top:1.4rem;color:#fff">
+        <span data-lang="en">Read more about my lineage</span>
+        <span data-lang="pt">Leia mais sobre minha linhagem</span>
+      </button>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- COLLABORATIONS / HOSTING -->
-<section id="collab">
-  <div class="journey">
-    <h3 class="section-title">host & space holder for retreats & events</h3>
+  <!-- OFFERINGS -->
+  <section id="offerings">
+    <div class="offerings">
+      <h2 class="section-title">
+        <span data-lang="en">how to practice or collaborate</span>
+        <span data-lang="pt">como praticar ou colaborar</span>
+      </h2>
 
-    <p>
-      If you’re creating a retreat, immersion, or meaningful gathering and need someone to hold the space with presence and care, I’m here to support you.
-    </p>
-    <p>
-      I collaborate with brands, facilitators, and creators to co-create experiences that feel intentional, grounded, and deeply human.
-    </p>
-    <p>
-      From wellness retreats to private events and conscious gatherings, I help shape an experience where people can truly slow down, connect, and feel.
-    </p>
+      <div class="offers-grid">
 
-    <button class="read-more-btn" type="button" onclick="openInfoModal('collab')">
-      Read more about collaborations
-    </button>
-  </div>
-</section>
+        <div class="offer-card">
+          <a class="img-link" href="https://wa.me/351924418425" target="_blank" rel="noopener">
+            <img src="images/classes.jpeg" alt="Group Classes">
+          </a>
+          <div class="offer-body">
+            <h4 data-lang="en">Group Classes</h4>
+            <h4 data-lang="pt">Aulas em Grupo</h4>
+            <div class="offer-sub">
+              <span data-lang="en">Move, breathe, and reconnect</span>
+              <span data-lang="pt">Movimente-se, respire e reconecte-se</span>
+            </div>
+            <p data-lang="en">For you, if you want to build consistency, feel your body stronger, and practice in a shared energy.</p>
+            <p data-lang="pt">Para você que deseja criar constância, fortalecer o corpo e praticar em uma energia compartilhada.</p>
+            <p><strong data-lang="en">You’ll feel:</strong><strong data-lang="pt">Você vai sentir:</strong></p>
+            <p data-lang="en">Grounded, energised, and more present.</p>
+            <p data-lang="pt">Mais presença, energia e conexão consigo.</p>
+            <a class="btn" href="https://wa.me/351924418425" target="_blank" rel="noopener"><span data-lang="en">Book a class</span><span data-lang="pt">Agendar aula</span></a>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <a class="img-link" href="https://wa.me/351924418425" target="_blank" rel="noopener">
+            <img src="images/session.jpeg" alt="1:1 Sessions">
+          </a>
+          <div class="offer-body">
+            <h4>1:1 Sessions</h4>
+            <div class="offer-sub">
+              <span data-lang="en">Personalised support for your journey</span>
+              <span data-lang="pt">Suporte personalizado para sua jornada</span>
+            </div>
+            <p data-lang="en">For you, if you’re seeking deeper guidance, emotional support, or a practice tailored to your body and moment in life, that needs guidance. lets talk.</p>
+            <p data-lang="pt">Para você que busca orientação mais profunda, suporte emocional ou uma prática adaptada ao seu corpo e momento de vida.</p>
+            <p><strong data-lang="en">You’ll feel:</strong><strong data-lang="pt">Você vai sentir:</strong></p>
+            <p data-lang="en">Seen, supported, and aligned.</p>
+            <p data-lang="pt">Mais alinhamento, acolhimento e clareza.</p>
+            <a class="btn" href="https://wa.me/351924418425" target="_blank" rel="noopener"><span data-lang="en">Book a private session</span><span data-lang="pt">Agendar sessão</span></a>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <a class="img-link" href="https://wa.me/351924418425" target="_blank" rel="noopener">
+            <img src="images/nidra.jpeg" alt="Yoga Nidra">
+          </a>
+          <div class="offer-body">
+            <h4>1x1 Yoga Nidra therapy</h4>
+            <div class="offer-sub">
+              <span data-lang="en">A deeply restorative and therapeutic practice to support your mental, emotional and physical well-being.</span>
+              <span data-lang="pt">Uma prática restaurativa e terapêutica para apoiar o bem-estar mental, emocional e físico.</span>
+            </div>
+            <p><strong data-lang="en">For you if</strong><strong data-lang="pt">Para você se</strong></p>
+            <p data-lang="en">Feeling drained, stressed, tensioned. Have problems sleeping. Looking for a deeper state of balance and inner calm.</p>
+            <p data-lang="pt">Você sente exaustão, estresse, tensão, dificuldade para dormir ou busca um estado mais profundo de equilíbrio e calma interior.</p>
+            <p><strong data-lang="en">You will leave feeling</strong><strong data-lang="pt">Você sairá sentindo</strong></p>
+            <p data-lang="en">Calm, Grounded, reconnect with yourself.</p>
+            <p data-lang="pt">Calma, enraizada e reconectada consigo.</p>
+            <a class="btn" href="https://wa.me/351924418425" target="_blank" rel="noopener"><span data-lang="en">Book a private session</span><span data-lang="pt">Agendar sessão</span></a>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <a class="img-link" href="https://wa.me/351924418425" target="_blank" rel="noopener">
+            <img src="images/retiros.jpeg" alt="Retreats">
+          </a>
+          <div class="offer-body">
+            <h4 data-lang="en">Workshops & Retreats</h4>
+            <h4 data-lang="pt">Workshops & Retiros</h4>
+            <div class="offer-sub">
+              <span data-lang="en">Immersive experiences to go deeper</span>
+              <span data-lang="pt">Experiências imersivas para aprofundar</span>
+            </div>
+            <p data-lang="en">For you, if you want to step away from routine and reconnect with yourself in a meaningful way.</p>
+            <p data-lang="pt">Para você que deseja sair da rotina e se reconectar consigo de forma profunda.</p>
+            <p><strong data-lang="en">You’ll feel:</strong><strong data-lang="pt">Você vai sentir:</strong></p>
+            <p data-lang="en">Renewed, open, and deeply connected.</p>
+            <p data-lang="pt">Renovação, abertura e conexão profunda.</p>
+            <a class="btn" href="https://wa.me/351924418425" target="_blank" rel="noopener"><span data-lang="en">See upcoming experiences</span><span data-lang="pt">Ver próximas experiências</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLAB -->
+  <section id="collab">
+    <div class="journey">
+      <h2 class="section-title">
+        <span data-lang="en">host & space holder for retreats & events</span>
+        <span data-lang="pt">facilitadora de retiros e eventos</span>
+      </h2>
+
+      <p data-lang="en">If you’re creating a retreat, immersion, or meaningful gathering and need someone to hold the space with presence and care, I’m here to support you.</p>
+      <p data-lang="en">I collaborate with brands, facilitators, and creators to co-create experiences that feel intentional, grounded, and deeply human.</p>
+      <p data-lang="en">From wellness retreats to private events and conscious gatherings, I help shape an experience where people can truly slow down, connect, and feel.</p>
+
+      <p data-lang="pt">Se você está criando um retiro, imersão ou encontro significativo e precisa de alguém para sustentar o espaço com presença e cuidado, estou aqui para apoiar.</p>
+      <p data-lang="pt">Colaboro com marcas, facilitadores e criadores para cocriar experiências intencionais, enraizadas e profundamente humanas.</p>
+      <p data-lang="pt">De retiros de bem-estar a eventos privados e encontros conscientes, ajudo a criar experiências onde as pessoas podem desacelerar, conectar e sentir.</p>
+
+      <button class="read-more-btn" type="button" onclick="openInfoModal('collab')">
+        <span data-lang="en">Let’s collaborate</span>
+        <span data-lang="pt">Vamos colaborar</span>
+      </button>
+    </div>
+  </section>
 
   <!-- LINKS -->
   <section id="benefits">
     <div class="benefits-wrap">
       <div class="benefit-cards">
         <div class="benefit-card">
-          <a href="https://www.youtube.com/@SEU_CANAL" target="_blank" rel="noopener">Try a class on YouTube</a>
-          <img src="galeria-2.jpg" alt="YouTube preview">
+          <a href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener"><img src="galeria-2.jpg" alt="Instagram"></a>
         </div>
         <div class="benefit-card">
-          <a href="https://wa.me/351924418425" target="_blank" rel="noopener">Book via WhatsApp</a>
-          <img src="galeria-3.jpg" alt="WhatsApp preview">
+          <a href="https://wa.me/351924418425" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/351924418425" target="_blank" rel="noopener"><img src="galeria-3.jpg" alt="WhatsApp"></a>
         </div>
         <div class="benefit-card">
-          <a href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener">Follow on Instagram</a>
-          <img src="galeria-4.jpg" alt="Instagram preview">
+          <a href="mailto:michellebavaresco@gmail.com">E-mail</a>
+          <a href="mailto:michellebavaresco@gmail.com"><img src="galeria-4.jpg" alt="Email"></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMMENTS (carrossel) -->
+  <!-- COMMENTS -->
   <section id="comments">
     <div class="comments-panel">
       <div class="comments-track" id="commentsTrack">
         <div class="comment-card">
-          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
+          “Practicing with Michelle has been such a wonderful experience. She combines warmth, humor and discipline beautifully.”
           <div class="comment-author">— Miranda</div>
         </div>
         <div class="comment-card">
-          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
-          <div class="comment-author">— Miranda</div>
+          “Her classes helped me reconnect with my body and slow down in a very grounded way.”
+          <div class="comment-author">— Sophie</div>
         </div>
         <div class="comment-card">
-          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
-          <div class="comment-author">— Miranda</div>
-        </div>
-        <div class="comment-card">
-          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
-          <div class="comment-author">— Miranda</div>
-        </div>
-        <div class="comment-card">
-          “Practicing with Michelle has been such a wonderful experience. She’s a truly inspiring yoga teacher who combines humor, warmth, and discipline in a way that makes every class special. Her approach has motivated me deeply and inspired me to continue my own yoga journey.”
-          <div class="comment-author">— Miranda</div>
+          “A safe and inspiring environment where movement becomes presence.”
+          <div class="comment-author">— Anna</div>
         </div>
       </div>
-      <button class="comment-nav comment-prev" id="prevComment" aria-label="Previous comment">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button class="comment-nav comment-next" id="nextComment" aria-label="Next comment">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
+
+      <button class="comment-nav comment-prev" id="prevComment"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="comment-nav comment-next" id="nextComment"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
   </section>
 
-  <!-- FORM PARA ENVIAR COMENTÁRIO -->
+  <!-- FEEDBACK FORM -->
   <section>
     <div class="feedback-form">
       <form action="mailto:michellebavaresco@gmail.com" method="post" enctype="text/plain">
-        <label for="name">Your name</label>
-        <input type="text" id="name" name="name" placeholder="Your name">
+        <label for="name"><span data-lang="en">Your name</span><span data-lang="pt">Seu nome</span></label>
+        <input type="text" id="name" name="name">
 
-        <label for="msg">Your message</label>
-        <textarea id="msg" name="message" placeholder="Write your feedback..."></textarea>
+        <label for="msg"><span data-lang="en">Your message</span><span data-lang="pt">Sua mensagem</span></label>
+        <textarea id="msg" name="message"></textarea>
 
-        <button type="submit">Send</button>
+        <button type="submit"><span data-lang="en">Send</span><span data-lang="pt">Enviar</span></button>
       </form>
+    </div>
+  </section>
+
+  <!-- FREE OFFER -->
+  <section id="free-offer">
+    <div class="journey" style="text-align:center;">
+      <h2 class="section-title"><span data-lang="en">free offer</span><span data-lang="pt">oferta gratuita</span></h2>
+      <p data-lang="en">Receive a short guided meditation to reconnect with your breath and body, or a free practice.</p>
+      <p data-lang="pt">Receba uma meditação guiada curta para se reconectar com a respiração e o corpo, ou uma prática gratuita.</p>
+      <a class="btn" href="mailto:michellebavaresco@gmail.com?subject=Free%20practice%20request">
+        <span data-lang="en">Get the free practice</span><span data-lang="pt">Receber prática gratuita</span>
+      </a>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="panel" style="text-align:center;background:var(--paper);border-radius:26px;box-shadow:var(--shadow);backdrop-filter:blur(4px);padding:2.1rem;">
-      <p style="max-width:640px;margin:0 auto 1rem">
-        If this work resonates, write to me and we’ll find the format that best suits your moment.
-      </p>
-      <div style="display:flex;justify-content:center;gap:1rem;">
-        <a class="icon-btn" href="https://wa.me/351924418425" target="_blank" aria-label="WhatsApp"
-           style="width:52px;height:52px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(42,42,42,.08);color:var(--ink);">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a class="icon-btn" href="mailto:michellebavaresco@gmail.com" aria-label="E-mail"
-           style="width:52px;height:52px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(42,42,42,.08);color:var(--ink);">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
+    <div class="panel">
+      <h2 class="section-title">contact</h2>
+      <p data-lang="en">If this work resonates, write to me and we’ll find the format that best suits your moment.</p>
+      <p data-lang="pt">Se este trabalho ressoa com você, escreva-me e encontraremos o formato ideal para o seu momento.</p>
+
+      <div style="display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap;">
+        <a class="btn" href="https://wa.me/351924418425" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="mailto:michellebavaresco@gmail.com">E-mail</a>
+        <a class="btn" href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <p>&copy; 2025 Michéle Bavaresco — Embodied Awakening</p>
   <div class="icons">
-    <a href="https://wa.me/351924418425" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/351924418425" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
     <a href="mailto:michellebavaresco@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.instagram.com/michebavaresco" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
   </div>
 </footer>
 
-<script>
-  // abre/fecha menu
-  const sheet = document.getElementById('sheet');
-  document.getElementById('openSheet').addEventListener('click', () => {
-    sheet.classList.add('open');
-    sheet.setAttribute('aria-hidden','false');
-  });
-  document.getElementById('closeSheet').addEventListener('click', closeSheet);
-  function closeSheet(){
-    sheet.classList.remove('open');
-    sheet.setAttribute('aria-hidden','true');
-  }
-
-  // carrossel de comentários
-  const track = document.getElementById('commentsTrack');
-  const cards = track.children;
-  const total = cards.length;
-  let index = 0;
-  function updateComments(){
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
-  document.getElementById('nextComment').onclick = () => {
-    index = (index + 1) % total;
-    updateComments();
-  };
-  document.getElementById('prevComment').onclick = () => {
-    index = (index - 1 + total) % total;
-    updateComments();
-  };
-</script>
-  <div class="info-modal" id="infoModal">
+<div class="info-modal" id="infoModal">
   <div class="info-modal-box">
-    <button class="info-close" type="button" onclick="closeInfoModal()">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
+    <button class="info-close" type="button" onclick="closeInfoModal()"><i class="fa-solid fa-xmark"></i></button>
     <h3 id="infoModalTitle"></h3>
     <div id="infoModalBody"></div>
   </div>
@@ -742,72 +944,89 @@
 
 <script>
   const MODAL_TEXTS = {
-    path: {
-      title: "The path so far",
-      body: `
-        <p>When I sit on my mat, I feel in service to something greater than myself - a small part of something vast, yet intimately connected. I don’t see yoga as a trend or just a physical practice. To me, it is a way of life, a space where we learn to understand the mind, navigate our inner world and reconnect with what truly matters - the connection between our bodies and minds.</p>
-        <p>When yoga came into my path, I didn't know I would end up teaching. It naturally happened because I felt the urge to share all the teachings I learned along the way from great guides in India, and also my beloved teacher, Mary. Ten years ago, under the guidance of Mary, I travelled to India - the birthplace of yoga - where my understanding deepened, transforming my practice into a living experience.</p>
-        <p>For me, yoga is the science of the mind. It is a journey of awareness, healing, and presence. Yoga has taught me to return to myself again and again - with clarity, strength, and tenderness. Today, I share this journey to help others reconnect with their bodies, minds, and inner truths.</p>
-      `
+    en: {
+      path: {
+        title: "The path so far",
+        body: `
+          <p>When I sit on my mat, I feel in service to something greater than myself - a small part of something vast, yet intimately connected. I don’t see yoga as a trend or just a physical practice. To me, it is a way of life, a space where we learn to understand the mind, navigate our inner world and reconnect with what truly matters - the connection between our bodies and minds.</p>
+          <p>When yoga came into my path, I didn't know I would end up teaching. It naturally happened because I felt the urge to share all the teachings I learned along the way from great guides in India, and also my beloved teacher, Mary. Ten years ago, under the guidance of Mary, I travelled to India - the birthplace of yoga - where my understanding deepened, transforming my practice into a living experience.</p>
+          <p>For me, yoga is the science of the mind. It is a journey of awareness, healing, and presence. Yoga has taught me to return to myself again and again - with clarity, strength, and tenderness. Today, I share this journey to help others reconnect with their bodies, minds, and inner truths.</p>
+          <p>I intend to create a space where you feel safe to slow down, feel, and reconnect with your body, your truth, and your inner balance. Yoga has transformed my life, and this is an invitation for you to experience that transformation too.</p>
+        `
+      },
+      lineage: {
+        title: "My lineage",
+        body: `
+          <p>I offer spaces where movement becomes meditation - an invitation to ground, release, and rise. Rooted in Hatha Yoga, my teachings weave together traditional wisdom and embodied presence, guiding each practitioner toward a deeper connection with themselves.</p>
+          <p>With over 800 hours of certified training (RYT-800), my path integrates Hatha, Cosmic Yoga, Yoga Nidra, Vinyasa, Ashtanga, Breathwork, Kundalini kriyas, Shatkarmas, and Vipassana meditation as taught by S. N. Goenka.</p>
+          <p>Each class is designed as a journey - honouring the body as a temple, the breath as a bridge, and awareness as the source of transformation.</p>
+        `
+      },
+      collab: {
+        title: "Collaborations / Hosting",
+        body: `
+          <p><strong>I can support with:</strong></p>
+          <p>Opening & closing the space<br>Guided meditation & breathwork<br>Group connection and flow<br>Co-facilitation</p>
+          <p><strong>The result:</strong><br>An experience that feels cohesive, safe, and alive — where people don’t just attend, but truly arrive.</p>
+          <p><a href="mailto:michellebavaresco@gmail.com">Let’s collaborate</a></p>
+        `
+      }
     },
-    lineage: {
-      title: "My lineage",
-      body: `
-        <p>I offer spaces where movement becomes meditation - an invitation to ground, release, and rise. Rooted in Hatha Yoga, my teachings weave together traditional wisdom and embodied presence, guiding each practitioner toward a deeper connection with themselves.</p>
-        <p>With over 800 hours of certified training (RYT-800), my path integrates Hatha, Cosmic Yoga, Yoga Nidra, Vinyasa, Ashtanga, Breathwork, Kundalini kriyas, Shatkarmas, and Vipassana meditation as taught by S. N. Goenka.</p>
-        <p>Each class is designed as a journey - honouring the body as a temple, the breath as a bridge, and awareness as the source of transformation.</p>
-      `
-    },
-    group: {
-      title: "Group Classes",
-      body: `
-        <p><strong>Move, breathe, and reconnect</strong></p>
-        <p>For you, if you want to build consistency, feel your body stronger, and practice in a shared energy.</p>
-        <p><strong>You’ll feel:</strong><br>Grounded, energised, and more present</p>
-        <p><a href="https://wa.me/351924418425" target="_blank">Book a class</a></p>
-      `
-    },
-    private: {
-      title: "1:1 Sessions",
-      body: `
-        <p><strong>Personalised support for your journey</strong></p>
-        <p>For you, if you’re seeking deeper guidance, emotional support, or a practice tailored to your body and moment in life.</p>
-        <p><strong>You’ll feel:</strong><br>Seen, supported, and aligned</p>
-        <p><a href="https://wa.me/351924418425" target="_blank">Book a private session</a></p>
-      `
-    },
-    nidra: {
-      title: "1x1 Yoga Nidra therapy",
-      body: `
-        <p>A deeply restorative and therapeutic practice to support your mental, emotional and physical well-being.</p>
-        <p><strong>For you if</strong><br>Feeling drained, stressed, tensioned<br>Have problems sleeping<br>Looking for a deeper state of balance and inner calm</p>
-        <p><strong>You will leave feeling</strong><br>Calm, grounded, reconnected with yourself.</p>
-        <p><a href="https://wa.me/351924418425" target="_blank">Book a private session</a></p>
-      `
-    },
-    retreats: {
-      title: "Workshops & Retreats",
-      body: `
-        <p><strong>Immersive experiences to go deeper</strong></p>
-        <p>For you, if you want to step away from routine and reconnect with yourself in a meaningful way.</p>
-        <p><strong>You’ll feel:</strong><br>Renewed, open, and deeply connected</p>
-        <p><a href="https://wa.me/351924418425" target="_blank">See upcoming experiences</a></p>
-      `
-    },
-    collab: {
-      title: "Collaborations / Hosting",
-      body: `
-        <p><strong>I can support with:</strong></p>
-        <p>Opening & closing the space<br>Guided meditation & breathwork<br>Group connection and flow<br>Co-facilitation</p>
-        <p><strong>The result:</strong><br>An experience that feels cohesive, safe, and alive — where people don’t just attend, but truly arrive.</p>
-        <p><a href="mailto:michellebavaresco@gmail.com">Let’s collaborate</a></p>
-      `
+    pt: {
+      path: {
+        title: "O caminho até aqui",
+        body: `
+          <p>Quando me sento no tapete, sinto-me a serviço de algo maior do que eu - uma pequena parte de algo vasto, mas intimamente conectada.</p>
+          <p>Para mim, yoga é um modo de vida, um espaço onde aprendemos a compreender a mente, navegar o mundo interior e nos reconectar com o que realmente importa.</p>
+          <p>Yoga me ensinou a voltar para mim mesma repetidamente - com clareza, força e ternura.</p>
+        `
+      },
+      lineage: {
+        title: "Minha linhagem",
+        body: `
+          <p>Ofereço espaços onde o movimento se torna meditação - um convite para enraizar, libertar e elevar.</p>
+          <p>Com mais de 800 horas de formação certificada, meu caminho integra Hatha, Cosmic Yoga, Yoga Nidra, Vinyasa, Ashtanga, Breathwork, kriyas de Kundalini, Shatkarmas e Vipassana.</p>
+          <p>Cada aula é desenhada como uma jornada - honrando o corpo como templo, a respiração como ponte e a consciência como fonte de transformação.</p>
+        `
+      },
+      collab: {
+        title: "Colaborações / Hosting",
+        body: `
+          <p><strong>Posso apoiar com:</strong></p>
+          <p>Abertura e encerramento do espaço<br>Meditação guiada e breathwork<br>Conexão e fluxo do grupo<br>Cofacilitação</p>
+          <p><strong>O resultado:</strong><br>Uma experiência coesa, segura e viva — onde as pessoas não apenas participam, mas verdadeiramente chegam.</p>
+          <p><a href="mailto:michellebavaresco@gmail.com">Vamos colaborar</a></p>
+        `
+      }
     }
   };
 
+  const sheet=document.getElementById('sheet');
+
+  document.getElementById('openSheet').addEventListener('click',()=>{
+    sheet.classList.add('open');
+  });
+
+  document.getElementById('closeSheet').addEventListener('click',closeSheet);
+
+  function closeSheet(){
+    sheet.classList.remove('open');
+  }
+
+  function setLang(lang){
+    document.documentElement.setAttribute('data-current-lang',lang);
+    document.documentElement.lang = lang;
+
+    document.getElementById('langEN').classList.toggle('active', lang === 'en');
+    document.getElementById('langPT').classList.toggle('active', lang === 'pt');
+  }
+
   function openInfoModal(key){
-    const item = MODAL_TEXTS[key];
+    const lang = document.documentElement.getAttribute('data-current-lang') || 'en';
+    const item = MODAL_TEXTS[lang][key];
+
     if(!item) return;
+
     document.getElementById("infoModalTitle").innerHTML = item.title;
     document.getElementById("infoModalBody").innerHTML = item.body;
     document.getElementById("infoModal").classList.add("open");
@@ -817,9 +1036,31 @@
     document.getElementById("infoModal").classList.remove("open");
   }
 
-  document.getElementById("infoModal").addEventListener("click", function(e){
-    if(e.target === this) closeInfoModal();
+  document.getElementById("infoModal").addEventListener("click",function(e){
+    if(e.target===this) closeInfoModal();
   });
+
+  const track=document.getElementById('commentsTrack');
+  const cards=track.children;
+  const total=cards.length;
+  let index=0;
+
+  function updateComments(){
+    track.style.transform=`translateX(-${index*100}%)`;
+  }
+
+  document.getElementById('nextComment').onclick=()=>{
+    index=(index+1)%total;
+    updateComments();
+  };
+
+  document.getElementById('prevComment').onclick=()=>{
+    index=(index-1+total)%total;
+    updateComments();
+  };
+
+  setLang(document.documentElement.getAttribute('data-current-lang') || 'en');
 </script>
+
 </body>
 </html>
